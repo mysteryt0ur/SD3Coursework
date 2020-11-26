@@ -5,6 +5,9 @@ import testIcon from '../images/notepad.png';
 import symptomIcon from '../images/thermometer.png';
 import settingsIcon from '../images/settings.png'
 import aboutIcon from '../images/about.png'
+import IsoCountdown from '../components/IsoCountdown'
+import PostcodeChecker from '../components/postcodeChecker'
+
 
 class Dashboard extends React.Component {
 
@@ -12,6 +15,8 @@ class Dashboard extends React.Component {
         return (
             <div className="content-inner">
                 <div id="responsive-dashboard">
+                    <PostcodeChecker />
+                    <IsoCountdown />
                 </div>
                 <div id="button-holder">
                     <div className="row">

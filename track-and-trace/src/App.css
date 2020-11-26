@@ -1,38 +1,113 @@
+:root {
+  /* primary colours */
+  --white: #FFFFFF;
+  --light-grey: #7D8E9A;
+  --dark-grey: #364652;
+  --main-blue: #0062C1;
+
+  /* secondary colours */
+  --dark-green: #01924C;
+  --light-green: #A6DB64;
+  --yellow: #FFBC29;
+  --orange: #EC900E;
+  --pink: #E270B1;
+  --red: #C62441;
+  --purple: #871355;
+
+  /* sizes */
+  --icon-size: 25px;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: var(--main-blue);
+  height: 7vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(15px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.content-inner {
+  height: 93vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#responsive-dashboard {
+  height: 50%;
+}
+
+#button-holder {
+  position: absolute;
+  bottom: 0;
+}
+
+.button-one, .button-two {
+  height: 9vh;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  width: 42%;
+  margin: 13px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+#venue-button, #results-button, #book-test-button, #checker-button, #settings-button, #about-button  {
+  line-height: calc(18px + 2vmin);
+}
+
+#venue-button {
+  background: var(--dark-green);
+}
+
+#results-button {
+  background: var(--orange);
+}
+
+#book-test-button {
+  background: var(--pink);
+}
+
+#checker-button {
+  background: var(--purple);
+}
+
+#settings-button {
+  background: var(--yellow);
+}
+
+#about-button {
+  background: var(--red);
+}
+
+a.main-button {
+  float: right;
+  background: var(--white);
+  border: 1px solid #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  text-shadow: #fff 0 1px 0;
+  color: black;
+  padding: 2vw;
+  font-size: 1.2rem;
+  font-weight: bold;
+  height: 6vh;
+  width: 63%;
+}
+
+#venue-icon, #results-icon, #test-icon, #settings-icon, #checker-icon, #about-icon {
+  float: left;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  vertical-align: middle;
+  padding: 1vh;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
 }

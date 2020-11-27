@@ -21,26 +21,26 @@ class Dashboard extends React.Component {
                 <div id="button-holder">
                     <div className="row">
                         <div className="button-one" id="venue-button">
-                            <img src={venueIcon} alt="venue-icon" id="venue-icon"></img><a className="main-button" href="#">Venue Check-In</a>
+                            <img src={venueIcon} alt="venue-icon" id="venue-icon"></img><a className="main-button" href="#"><span>Venue Check-In</span></a>
                         </div>
                         <div className="button-two" id="results-button">
-                            <img src={resultIcon} alt="results-icon" id="results-icon"></img><a className="main-button" href="#">Input Test Result</a>
+                            <img src={resultIcon} alt="results-icon" id="results-icon"></img><a className="main-button" href="#"><span>Input Test Result</span></a>
                         </div>
                     </div>
                     <div className="row">
                         <div className="button-one" id="book-test-button">
-                            <img src={testIcon} alt="test-icon" id="test-icon"></img><a className="main-button" href="#">Book a Test</a>
+                            <img src={testIcon} alt="test-icon" id="test-icon"></img><a className="main-button" href="#"><span>Book a Test</span></a>
                         </div>
                         <div className="button-two" id="checker-button">
-                            <img src={symptomIcon} alt="checker-icon" id="checker-icon"></img><a className="main-button" href="#">Symptom Checker</a>
+                            <img src={symptomIcon} alt="checker-icon" id="checker-icon"></img><a className="main-button" href="#"><span>Symptom Checker</span></a>
                         </div>
                     </div>
                     <div className="row">
                         <div className="button-one" id="settings-button">
-                            <img src={settingsIcon} alt="settings-icon" id="settings-icon"></img><a className="main-button" href="#">Settings</a>
+                            <img src={settingsIcon} alt="settings-icon" id="settings-icon"></img><a className="main-button" href="#"><span>Settings</span></a>
                         </div>
                         <div className="button-two" id="about-button">
-                            <img src={aboutIcon} alt="about-icon" id="about-icon"></img><a className="main-button" href="#">About</a>
+                            <img src={aboutIcon} alt="about-icon" id="about-icon"></img><a className="main-button" href="#"><span>About</span></a>
                         </div>
                     </div>
                 </div>

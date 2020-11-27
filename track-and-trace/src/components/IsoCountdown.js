@@ -1,25 +1,27 @@
 import React from 'react';
 import ArrowIcon from '../images/arrow.png'
+import CountdownInfo from '../components/CountdownInfo'
 
 class IsoCountdown extends React.Component {
 
     render() {
         return (
             <div>
-                <div className="iso-container">
-                    <div className="iso-header">
+                <div className="dashboard-container">
+                    <div className="dashboard-header">
                         <span>Isolation Countdown</span>
                     </div>
                     <div className="iso-info">
                         <div className="iso-data">
                             <span>Your isolation period ends in:</span>
+                            <CountdownInfo />
                         </div>
-                        <div className="iso-addit-info">
+                        <div className="addit-info">
                             <div>
-                                <p>Find out more information on isolation</p>
+                                <p className="addit-info-p">Find out more information on isolation</p>
                             </div>
-                            <div>
-                                <img src={ArrowIcon} alt="arrow-icon" id="arrow-icon"></img>
+                            <div className="arrow-icon-holder">
+                                <img src={ArrowIcon} alt="arrow-icon" className="arrow-icon"></img>
                             </div>
                         </div>
                     </div>

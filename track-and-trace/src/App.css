@@ -14,8 +14,16 @@
   --red: #C62441;
   --purple: #871355;
 
+  /* fonts */
+  --main-font: 'Open Sans', sans-serif;
+  --header-font: 'Raleway', sans-serif;
+
   /* sizes */
   --icon-size: 25px;
+}
+
+* {
+  font-family: var(--main-font);
 }
 
 .App {
@@ -31,10 +39,14 @@
   justify-content: center;
   font-size: calc(15px + 2vmin);
   color: white;
+  font-family: var(--header-font);
+  font-weight: 700;
 }
 
 .content-inner {
   height: 93vh;
+  width: 90%;
+  margin: auto;
 }
 
 #responsive-dashboard {
@@ -52,8 +64,12 @@
   align-items: center;
   border-radius: 10px;
   width: 42%;
-  margin: 13px;
+  margin-bottom: 5%;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+.button-one {
+  margin-right: 10%;
 }
 
 #venue-button, #results-button, #book-test-button, #checker-button, #settings-button, #about-button  {
@@ -110,4 +126,37 @@ a.main-button {
 .row {
   display: flex;
   flex-direction: row;
+}
+
+.iso-header {
+  background-color: var(--dark-grey);
+  height: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: white;
+  font-family: var(--header-font);
+  text-align: left;
+  padding-left: 3vw;
+}
+
+.iso-container {
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+.iso-info {
+  display: flex;
+}
+
+.iso-data {
+  width: 70%;
+}
+
+.iso-addit-info {
+  width: 30%;
+  background-color: var(--light-grey);
+  color: var(--white);
+  font-size: 0.8rem;
 }

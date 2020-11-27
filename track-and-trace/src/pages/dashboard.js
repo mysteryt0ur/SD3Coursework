@@ -15,8 +15,8 @@ class Dashboard extends React.Component {
         return (
             <div className="content-inner">
                 <div id="responsive-dashboard">
-                    <PostcodeChecker />
                     <IsoCountdown />
+                    <PostcodeChecker />
                 </div>
                 <div id="button-holder">
                     <div className="row">

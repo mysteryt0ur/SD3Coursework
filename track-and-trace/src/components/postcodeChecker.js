@@ -19,11 +19,9 @@ class PostcodeChecker extends React.Component {
                         </div>
                         <div className="postcode-details">
                             <p>The risk level in</p>
-                            <p id="postcode"><GetPostcode /></p>
+                            <GetPostcode />
                             <p>is</p>
-                            <div>
-                                <DangerLevel />
-                            </div>
+                            <DangerLevel />
                         </div>
                         <div className="addit-info">
                             <div>

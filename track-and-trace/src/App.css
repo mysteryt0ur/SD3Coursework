@@ -6,13 +6,18 @@
   --main-blue: #0062C1;
 
   /* secondary colours */
+  --dark-blue: #002850;
+  --light-blue: #50A8FF;
+  --lighter-blue: #a1d0ff;
+  --pink: #E270B1;
+  --purple: #A11866;
+  --dark-purple: #400024;
+
+  /* tertiary colours */
   --dark-green: #01924C;
-  --light-green: #A6DB64;
   --yellow: #FFBC29;
   --orange: #EC900E;
-  --pink: #E270B1;
   --red: #C62441;
-  --purple: #871355;
 
   /* fonts */
   --main-font: 'Roboto', sans-serif;
@@ -48,6 +53,21 @@ p {
   font-weight: 700;
 }
 
+.page-header {
+  height: 12vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(25px + 2vmin);
+  font-family: var(--header-font) ;
+  font-weight: 700;
+}
+
+#itr-header {
+  background-color: var(--light-blue);
+}
+
 .content-inner {
   height: 93vh;
   width: 90%;
@@ -75,7 +95,7 @@ p {
 }
 
 .button-one {
-  margin-right: 10%;
+  margin-right: 11.75%;
 }
 
 .button-one span, .button-two span {
@@ -83,27 +103,27 @@ p {
 }
 
 #venue-button {
-  background: var(--dark-green);
+  background: var(--dark-blue);
 }
 
 #results-button {
-  background: var(--orange);
+  background: var(--light-blue);
 }
 
 #book-test-button {
-  background: var(--pink);
+  background: var(--lighter-blue);
 }
 
 #checker-button {
-  background: var(--purple);
+  background: var(--pink);
 }
 
 #settings-button {
-  background: var(--yellow);
+  background: var(--purple);
 }
 
 #about-button {
-  background: var(--red);
+  background: var(--dark-purple);
 }
 
 a.main-button {
@@ -295,4 +315,36 @@ a.main-button {
 #postcode {
   font-weight: 700;
   font-size: 1.5rem;
+}
+
+.page-info {
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  height: 30vh;
+}
+
+.page-info p {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0px 10%;
+}
+
+#input-test-form {
+  height: 40vh;
+}
+
+#input-test-form label{
+  height: 50%;
+}
+
+input[type=text] {
+  border: 1px solid #7D8E9A;
+  height: 3vh;
+  border-radius: 5px;
+  margin-left: 5vw;
+}
+
+.submit-button-holder {
+  margin-top: 20vh;
 }

@@ -16,7 +16,9 @@ class GetPostcode extends React.Component {
         let userPostcode = this.getUserPostcode()
         return (
             <div>
-                <span>{userPostcode}</span>
+                <p id="postcode">
+                    {userPostcode}
+                </p>
             </div>
         )
     }

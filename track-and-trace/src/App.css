@@ -20,8 +20,8 @@
   --red: #C62441;
 
   /* fonts */
-  --main-font: 'Roboto', sans-serif;
-  --header-font: 'Raleway', sans-serif;
+  --main-font: 'Raleway', sans-serif;
+  --header-font: 'Ubuntu', sans-serif;
 
   /* sizes */
   --icon-size: 25px;
@@ -80,9 +80,10 @@ p {
 }
 
 .content-inner {
-  height: 93vh;
+  height: auto;
   width: 90%;
   margin: auto;
+  margin-bottom: 0px;
 }
 
 .content-inner-addit-page {

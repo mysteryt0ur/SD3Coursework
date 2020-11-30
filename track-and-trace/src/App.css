@@ -6,16 +6,38 @@
   --main-blue: #0062C1;
 
   /* secondary colours */
+  --dark-blue: #002850;
+  --light-blue: #50A8FF;
+  --lighter-blue: #a1d0ff;
+  --pink: #E270B1;
+  --purple: #A11866;
+  --dark-purple: #400024;
+
+  /* tertiary colours */
   --dark-green: #01924C;
-  --light-green: #A6DB64;
   --yellow: #FFBC29;
   --orange: #EC900E;
-  --pink: #E270B1;
   --red: #C62441;
-  --purple: #871355;
+
+  /* fonts */
+  --main-font: 'Roboto', sans-serif;
+  --header-font: 'Raleway', sans-serif;
 
   /* sizes */
   --icon-size: 25px;
+}
+
+body:not(.App-header) {
+  font-family: var(--main-font);
+}
+
+#root, .App {
+  height: 100vh;
+}
+
+p {
+  margin-block-start: 0.1em;
+  margin-block-end: 0.1em;
 }
 
 .App {
@@ -28,13 +50,44 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   font-size: calc(15px + 2vmin);
   color: white;
+  font-family: var(--header-font);
+  font-weight: 700;
+  width: 100%;
+  flex-direction: row;
+}
+
+.page-header {
+  height: 12vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(25px + 2vmin);
+  font-family: var(--header-font);
+  font-weight: 700;
+}
+
+#header-straightener {
+  width: 75px;
+  height: 30px;
+}
+
+#itr-header {
+  background-color: var(--light-blue);
 }
 
 .content-inner {
   height: 93vh;
+  width: 90%;
+  margin: auto;
+}
+
+.content-inner-addit-page {
+  width: 90%;
+  margin: auto;
 }
 
 #responsive-dashboard {
@@ -44,59 +97,140 @@
 #button-holder {
   position: absolute;
   bottom: 0;
+  margin-bottom: 1vh;
 }
 
-.button-one, .button-two {
-  height: 9vh;
+.button-one, .button-two, .submit-button-holder {
   display: flex;
   align-items: center;
   border-radius: 10px;
   width: 42%;
-  margin: 13px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
 }
 
-#venue-button, #results-button, #book-test-button, #checker-button, #settings-button, #about-button  {
-  line-height: calc(18px + 2vmin);
+.submit-button-holder {
+  height: 8vh
+}
+
+.button-one, .button-two {
+  margin-bottom: 5%;
+  height: 12vh;
+}
+
+.button {
+  height: 60%;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  width: 20%;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+  font-family: var(--main-font);
+}
+
+.button-one {
+  margin-right: 11.75%;
+}
+
+.button-one span, .button-two span {
+  margin: auto;
 }
 
 #venue-button {
-  background: var(--dark-green);
+  background: var(--dark-blue);
 }
 
 #results-button {
-  background: var(--orange);
+  background: var(--light-blue);
 }
 
 #book-test-button {
-  background: var(--pink);
+  background: var(--lighter-blue);
 }
 
 #checker-button {
-  background: var(--purple);
+  background: var(--pink);
 }
 
 #settings-button {
-  background: var(--yellow);
+  background: var(--purple);
 }
 
 #about-button {
-  background: var(--red);
+  background: var(--dark-purple);
 }
 
-a.main-button {
+.submit-button-holder {
+  background: var(--dark-green);
+}
+
+#home-button {
+  background: var(--orange);
+}
+
+a.main-button, input[type=submit], a.header-button {
   float: right;
   background: var(--white);
   border: 1px solid #fff;
-  border-radius: 10px;
+  border-radius: 5px;
   text-decoration: none;
   text-shadow: #fff 0 1px 0;
   color: black;
   padding: 2vw;
-  font-size: 1.2rem;
   font-weight: bold;
-  height: 6vh;
-  width: 63%;
+  width: 62%;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  margin-right: 1vw;
+}
+
+a.main-button, input.submit-button {
+  height: 9vh;
+  font-size: 1rem;
+}
+
+input.submit-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 7vh;
+  width: 27vw;
+  text-align: center;
+  margin: auto;
+}
+
+a.header-button {
+  height: 30%;
+  font-size: 0.8rem;
+}
+
+.danger-level {
+  display: flex;
+  text-align: center;
+  margin: auto;
+  font-size: 1rem;
+  font-weight: bold;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  padding: 0.75vh;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  width: 20vw;
+  margin-top: 0.25em;
+}
+
+#low-level {
+  background-color: var(--dark-green);
+}
+
+#med-level {
+  background-color: var(--orange);
+}
+
+#high-level {
+  background-color: var(--red);
 }
 
 #venue-icon, #results-icon, #test-icon, #settings-icon, #checker-icon, #about-icon {
@@ -110,4 +244,184 @@ a.main-button {
 .row {
   display: flex;
   flex-direction: row;
+}
+
+.dashboard-header {
+  background-color: var(--dark-grey);
+  height: 4vh;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: white;
+  font-family: var(--header-font);
+  text-align: left;
+  padding-left: 3vw;
+}
+
+.dashboard-header * {
+  font-weight: 700;
+}
+
+.dashboard-container {
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+  margin: 8% 0px;
+}
+
+.iso-info, .addit-info {
+  display: flex;
+  justify-content: center;
+  align-items: middle;
+}
+
+.iso-info {
+  height: 10vh;
+}
+
+.iso-data, .postcode-details {
+  font-weight: 400;
+}
+
+.iso-data div {
+  display: flex;
+  margin: auto;
+}
+
+.countdown-info p {
+  font-weight: 700;
+  padding-bottom: 0.5vh;
+}
+
+.countdown-num {
+  font-size: 2rem;
+}
+
+.arrow-icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  padding: 0px 1.5vw 0px 0px;
+}
+
+.header-arrow-icon {
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+  padding: 0px 0.5vw;
+}
+
+.arrow-icon-holder {
+  height: 20px;
+  vertical-align: middle;
+  margin: auto;
+}
+
+.iso-data {
+  display: flex;
+  flex-wrap: wrap;
+  height: 10vh;
+  width: 70%;
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.iso-data span {
+  width: 100%;
+  padding-top: 1vh;
+}
+
+.addit-info-p {
+  vertical-align: middle;
+  padding: 2vw;
+}
+
+.dashboard-header span {
+  font-weight: 700;
+  font-size: 0.85em;
+}
+
+.addit-info {
+  width: 30%;
+  background-color: var(--light-grey);
+  color: var(--white);
+  font-size: 0.65rem;
+  height: 100%;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+}
+
+.postcode-icon {
+  display: flex;
+  align-items: center;
+  width: 30%;
+}
+
+.postcode-info {
+  display: flex;
+  height: 21vh;
+}
+
+#pin-icon {
+  width: 100%;
+}
+
+.postcode-details {
+  align-items: center;
+  margin: auto;
+  padding: 2vw;
+  width: 40%;
+}
+
+.postcode-details span {
+  width: 100%;
+}
+
+#postcode {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.page-info {
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  height: 30vh;
+}
+
+.page-info p {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0px 10%;
+}
+
+#input-test-form {
+  height: 40vh;
+  margin-top: 20%;
+}
+
+#input-test-form label{
+  height: 50%;
+}
+
+input[type=text] {
+  border: 1px solid #7D8E9A;
+  height: 3vh;
+  border-radius: 5px;
+  margin-left: 5vw;
+}
+
+input {
+  font-family: var(--main-font);
+}
+
+.submit-button-positioner {
+  display: flex;
+  justify-content: center;
+  padding-top: 50%;
+}
+
+.addit-page {
+  height: calc(100vh - 7vh); 
 }

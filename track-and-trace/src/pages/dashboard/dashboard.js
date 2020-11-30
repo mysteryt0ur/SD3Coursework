@@ -5,8 +5,8 @@ import testIcon from '../images/notepad.png';
 import symptomIcon from '../images/thermometer.png';
 import settingsIcon from '../images/settings.png'
 import aboutIcon from '../images/about.png'
-import IsoCountdown from '../../components/isoCountdown'
-import PostcodeChecker from '../../components/postcodeChecker'
+import IsoCountdown from '../../components/isoCountdown/isoCountdown'
+import PostcodeChecker from '../../components/postcodeChecker/postcodeChecker'
 
 class Dashboard extends Component {
 

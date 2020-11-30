@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Formik, Form, useField } from 'formik';
 import { TextField, Radio, FormControlLabel, Button } from '@material-ui/core';
+import * as yup from 'yup';
+import './styles.css';
+
 
 const MyRadio = ({label, ...props}) => {
     const [field] = useField(props);
@@ -25,6 +28,19 @@ const MyTextField = ({
     );
 };
 
+const validationSchema = yup.object({
+    genloc: yup
+    .string()
+    .required()
+    .max(4),
+    btconsent: yup
+    .string()
+    .required(),
+    tcconsent: yup
+    .string()
+    .required()
+})
+
 class testForm extends Component {
 
     render() {
@@ -34,9 +50,10 @@ class testForm extends Component {
                 initialValues={{
                     genloc: '', 
                     btconsent: '',
-                    tcconsent: '',
-                
+                    tcconsent: ''
                 }}
+                validationSchema={validationSchema}
+
                 onSubmit={(data, { setSubmitting }) => {
                     setSubmitting(true);
                     //make async call
@@ -44,11 +61,11 @@ class testForm extends Component {
                     setSubmitting(false);
                 }}
                 >
-                    {({ values, isSubmitting }) => (
+                    {({ values, errors, isSubmitting }) => (
                         <Form>
                             <div> q1</div>
                             <MyTextField
-                            placeholder='e.g. LE7 or SG12' 
+                            placeholder='Input text' 
                             name='genloc'
                             type='input'
                             as={TextField}
@@ -67,6 +84,7 @@ class testForm extends Component {
                                 <Button disabled={isSubmitting} type='submit'>Continue</Button>
                             </div>
                             <pre>{JSON.stringify(values, null, 2)}</pre>
+                            <pre>{JSON.stringify(errors, null, 2)}</pre>
                         </Form>
                     )}
                 </Formik>

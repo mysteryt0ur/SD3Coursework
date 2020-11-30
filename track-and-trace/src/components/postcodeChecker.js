@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class PostcodeChecker extends React.Component {
+class testForm extends Component {
 
     render() {
         return (

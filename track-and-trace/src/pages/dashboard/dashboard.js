@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import venueIcon from '../images/check.png';
 import resultIcon from '../images/statistics.png';
 import testIcon from '../images/notepad.png';
 import symptomIcon from '../images/thermometer.png';
 import settingsIcon from '../images/settings.png'
 import aboutIcon from '../images/about.png'
-import IsoCountdown from '../components/IsoCountdown'
-import PostcodeChecker from '../components/postcodeChecker'
+import IsoCountdown from '../../components/isoCountdown'
+import PostcodeChecker from '../../components/postcodeChecker'
 
-
-class Dashboard extends React.Component {
+class Dashboard extends Component {
 
     render() {
         return (

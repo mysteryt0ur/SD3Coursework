@@ -1,5 +1,5 @@
 import './App.css';
-import Dashboard from './pages/dashboard'
+import WelcomePage from './pages/welcome/welcome'
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
         <span>Track & Trace App</span>
       </header>
       <div>
-        <Dashboard />
+        <WelcomePage />
       </div>
     </div>
   );

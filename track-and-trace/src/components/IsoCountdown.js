@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class IsoCountdown extends React.Component {
+class IsoCountdown extends Component {
 
     render() {
         return (

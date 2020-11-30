@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TestForm from '../../components/testForm/testForm'
-import './welcome.css';
+import './styles.css';
 
 
 class WelcomePage extends Component {

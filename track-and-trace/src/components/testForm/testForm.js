@@ -46,6 +46,9 @@ class testForm extends Component {
     render() {
         return (
             <div>
+                <div className='form-header'>
+                    <div className='form-text'>To Continue, please fill in the form below</div>
+                </div>
                 <Formik 
                 initialValues={{
                     genloc: '', 
@@ -63,26 +66,32 @@ class testForm extends Component {
                 >
                     {({ values, errors, isSubmitting }) => (
                         <Form>
-                            <div> q1</div>
+                            <div> 
+                            <label className= 'question'>q1</label>
                             <MyTextField
                             placeholder='Input text' 
                             name='genloc'
                             type='input'
                             as={TextField}
                             />
+                            </div>
 
-                            <div> q2</div>
+                            <div>
+                            <label className= 'question'>q2</label>
+                            <p className= 'example'>e.g</p>
                             <MyRadio name='btconsent' type='radio' value="yes" label='yes' />
                             <MyRadio name='btconsent' type='radio' value="no" label='no'  />
+                            </div>
 
-                            <div> q3</div>
+                            <div> q3
                             <MyRadio name='tcconsent' type='radio' value="yes" label='yes' />
                             <MyRadio name='tcconsent' type='radio' value="no" label='no' />
-
+                            </div>
 
                             <div>
                                 <Button disabled={isSubmitting} type='submit'>Continue</Button>
                             </div>
+
                             <pre>{JSON.stringify(values, null, 2)}</pre>
                             <pre>{JSON.stringify(errors, null, 2)}</pre>
                         </Form>

@@ -75,10 +75,6 @@ p {
   height: 30px;
 }
 
-#itr-header {
-  background-color: var(--light-blue);
-}
-
 .content-inner {
   height: auto;
   width: 90%;
@@ -136,11 +132,15 @@ p {
   margin: auto;
 }
 
-#venue-button {
+#vci-header {
+  color: white;
+}
+
+#venue-button, #vci-header {
   background: var(--dark-blue);
 }
 
-#results-button {
+#results-button, #itr-header {
   background: var(--light-blue);
 }
 
@@ -303,6 +303,13 @@ a.header-button {
   height: 20px;
   vertical-align: middle;
   padding: 0px 1.5vw 0px 0px;
+}
+
+.arrow-icon-for-button {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  padding: 0px 0px 0px 1.5vw;
 }
 
 .header-arrow-icon {

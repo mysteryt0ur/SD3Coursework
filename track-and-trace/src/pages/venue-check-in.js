@@ -1,13 +1,13 @@
 import React from 'react';
 import ArrowIcon from '../images/arrow.png'
 
-class InputTestPage extends React.Component {
+class VenueCheckIn extends React.Component {
 
     render() {
         return (
             <div className="addit-page">
-                <div className="page-header" id="itr-header">
-                    <p>Input Test Result</p>
+                <div className="page-header" id="vci-header">
+                    <p>Venue Check-In</p>
                 </div>
                 <div className="content-inner-addit-page">
                     <div className="page-info">
@@ -33,4 +33,4 @@ class InputTestPage extends React.Component {
     }
 }
 
-export default InputTestPage;
+export default VenueCheckIn;

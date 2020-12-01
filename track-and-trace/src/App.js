@@ -1,17 +1,23 @@
 import './App.css';
+import React from 'react';
 import Dashboard from './pages/dashboard'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <span>Track & Trace App</span>
-      </header>
-      <div>
-        <Dashboard />
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      activePage: "dashboard"
+    };
+  }
+
+  render() {  
+    return (
+      <div className="App">
+        {this.state.activePage === "dashboard" && <Dashboard/>}
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

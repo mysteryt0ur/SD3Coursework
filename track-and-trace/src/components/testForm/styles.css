@@ -1,0 +1,28 @@
+.form-text {
+    margin: 4vh 5vh;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 2.5vh;
+} 
+
+.info-img {
+    display: block;
+    height: 1em;
+    width: 1em;
+    margin-right: 3vh;
+    float: right;
+}
+
+.question-container {
+    width: 33%;
+    display: inline-block;
+}
+
+.input-container {
+    width: 33%;
+    display: inline-block;
+}
+
+.row-container {
+    width: 100%;
+}

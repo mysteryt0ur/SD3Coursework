@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import venueIcon from '../images/check.png';
 import resultIcon from '../images/statistics.png';
 import testIcon from '../images/notepad.png';
 import symptomIcon from '../images/thermometer.png';
 import settingsIcon from '../images/settings.png'
 import aboutIcon from '../images/about.png'
+<<<<<<< HEAD:track-and-trace/src/pages/dashboard/dashboard.js
+import IsoCountdown from '../../components/isoCountdown/isoCountdown'
+import PostcodeChecker from '../../components/postcodeChecker/postcodeChecker'
+
+class Dashboard extends Component {
+=======
 import BackArrow from '../images/left-arrow.png'
 import IsoCountdown from '../components/IsoCountdown'
 import PostcodeChecker from '../components/postcodeChecker'
@@ -25,6 +31,7 @@ class Dashboard extends React.Component {
         console.log(newPage)
         this.setState({ activePage: newPage });
     }
+>>>>>>> master:track-and-trace/src/pages/dashboard.js
 
     render() {
         return (

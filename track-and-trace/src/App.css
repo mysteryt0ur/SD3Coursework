@@ -398,7 +398,41 @@ a.header-button {
   height: 30vh;
 }
 
-.page-info p {
+.page-info-venue, .page-info-venue-two {
+  text-align: center;
+  display: flex;
+  height: 10vh;
+}
+
+.page-info-venue {
+  padding-top: 3vh;
+}
+
+#camera-input {
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  height: 40vh;
+}
+
+#camera {
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  margin: auto;
+  height: 90%;
+  width: 90%;
+  background-color: black;
+}
+
+#vci-option-2 {
+  text-decoration: underline;
+  font-style: italic;
+  font-weight: 400;
+  margin: auto;
+}
+
+.page-info p, .page-info-venue p {
   font-weight: 700;
   font-size: 1.2rem;
   margin: 0px 10%;

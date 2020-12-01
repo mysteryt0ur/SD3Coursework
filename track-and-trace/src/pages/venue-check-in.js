@@ -10,8 +10,14 @@ class VenueCheckIn extends React.Component {
                     <p>Venue Check-In</p>
                 </div>
                 <div className="content-inner-addit-page">
-                    <div className="page-info">
-                        <p>If you have recieved a code via the NHS text services linking to your recent coronavirus test, please enter this in the box below</p>
+                    <div className="page-info-venue">
+                        <p>Use your devices camera to place the QR code into the box below</p>
+                    </div>
+                    <div id="camera-input">
+                        <div id="camera"></div>
+                    </div>
+                    <div className="page-info-venue-two">
+                        <p id="vci-option-2">Enter the code manually</p>
                     </div>
                     <form id="input-test-form">
                         <label id="input-test-code">

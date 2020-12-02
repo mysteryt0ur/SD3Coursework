@@ -1,12 +1,9 @@
-<<<<<<< HEAD:track-and-trace/src/components/isoCountdown/isoCountdown.js
-import React, { Component } from 'react';
-=======
+  
 import React from 'react';
 import ArrowIcon from '../images/arrow.png'
 import CountdownInfo from '../components/CountdownInfo'
->>>>>>> master:track-and-trace/src/components/IsoCountdown.js
 
-class IsoCountdown extends Component {
+class IsoCountdown extends React.Component {
 
     render() {
         return (

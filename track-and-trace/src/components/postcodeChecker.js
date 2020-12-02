@@ -1,14 +1,10 @@
-<<<<<<< HEAD:track-and-trace/src/components/postcodeChecker/postcodeChecker.js
-import React, { Component } from 'react';
-=======
 import React from 'react';
 import ArrowIcon from '../images/arrow.png'
 import PinIcon from '../images/pin.png'
 import DangerLevel from '../components/dangerLevel'
 import GetPostcode from '../components/getPostcode'
->>>>>>> master:track-and-trace/src/components/postcodeChecker.js
 
-class testForm extends Component {
+class PostcodeChecker extends React.Component {
 
     render() {
         return (

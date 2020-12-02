@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import { Formik, Form, useField } from "formik";
 import { TextField, Radio, FormControlLabel, Button } from "@material-ui/core";
 import * as yup from "yup";
-
 import info from "../../images/information.png";
-
-import "./styles.css";
+import ArrowIcon from "../../images/arrow.png"
 
 const MyRadio = ({ label, ...props }) => {
   const [field] = useField(props);
@@ -37,7 +35,7 @@ class testForm extends Component {
       <div>
         <div className="form-header">
           <div className="form-text">
-            To Continue, please fill in the form below
+            To continue, please fill in the form below
           </div>
         </div>
         <Formik
@@ -55,66 +53,80 @@ class testForm extends Component {
           }}
         >
           {({ values, errors, isSubmitting }) => (
-            <Form>
-              <div>
-                <label className="question">
-                  First 3/4 characters of your postcode:
-                </label>
-                <MyTextField
-                  placeholder="Input text"
-                  name="genloc"
-                  type="input"
-                  as={TextField}
-                />
-                <p className="tut-text">e.g LE7 or SG12</p>
+            <Form id="welcome-form">
+              <div className="form-row">
+                <div className="question">
+                  <label>
+                    The first three/four characters of your postcode:
+                  </label>
+                  <p className="tut-text">e.g LE7 or SG12</p>
+                </div>
+                <div className="form-input">
+                  <MyTextField
+                    className="form-text-input"
+                    placeholder="postcode characters"
+                    name="genloc"
+                    type="input"
+                    as={TextField}
+                  />
+                </div>
               </div>
 
-              <div className="row-container">
-                <div className="question container">
-                  <p className="question">
+              <div className="form-row">
+                <div className="question">
+                  <p>
                     Do you consent to Bluetooth services being used for
                     proximity matching?
+                    <img className="info-img" src={info} alt="more info"></img>
                   </p>
-                  <img className="info-img" src={info} alt="more info"></img>
-                  <p className="tut-text">please tick the appropriate box</p>
+                  <p className="tut-text">Please tick the appropriate box</p>
                 </div>
 
-                <div className="input-container">
+                <div className="form-input">
                   <MyRadio
                     name="btconsent"
                     type="radio"
-                    value="yes"
-                    label="yes"
+                    value="Yes"
+                    label="Yes"
                   />
                   <MyRadio
                     name="btconsent"
                     type="radio"
-                    value="no"
-                    label="no"
+                    value="No"
+                    label="No"
                   />
                 </div>
               </div>
 
-              <div>
-                <label className="tc-label">
-                  I have read and aggree with the
-                </label>
-                <MyRadio
-                  name="tc-consent"
-                  type="radio"
-                  value="yes"
-                  label="yes"
-                />
-                <MyRadio name="tc-consent" type="radio" value="no" label="no" />
-                <p className="tc-link">terms and conditions</p>
+              <div className="form-row">
+                <div className="question">
+                  <label className="tc-label">
+                    I have read and agree with the
+                  </label>
+                  <p className="tut-text" id="t-and-t">terms and conditions</p>
+                </div>
+                <div className="form-input">
+                  <MyRadio
+                    name="tc-consent"
+                    type="radio"
+                    value="Yes"
+                    label="Yes"
+                  />
+                  <MyRadio name="tc-consent" type="radio" value="No" label="No" />
+                </div>
               </div>
 
-              <div>
-                <Button disabled={isSubmitting} type="submit">
+
+              <div className="submit-button-positioner-welcome">
+                <div className="submit-button-holder">
+                  <div className="arrow-icon-holder">
+                    <img src={ArrowIcon} alt="arrow-icon" className="arrow-icon-for-button"></img>
+                  </div>
+                  <Button disabled={isSubmitting} className="submit-button" type="submit">
                   Continue
-                </Button>
+                  </Button>
+                </div>
               </div>
-
               <pre>{JSON.stringify(values, null, 2)}</pre>
               <pre>{JSON.stringify(errors, null, 2)}</pre>
             </Form>

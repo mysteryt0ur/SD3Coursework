@@ -113,7 +113,8 @@ p {
 }
 
 .submit-button-holder {
-  height: 8vh
+  height: 8vh;
+  margin-right: 8vw;
 }
 
 .submit-button-holder-welcome {
@@ -202,6 +203,7 @@ button {
 
 #home-button {
   background: var(--orange);
+  margin-right: 0px;
 }
 
 a.main-button, input[type=submit], a.header-button {
@@ -441,7 +443,7 @@ a.header-button {
 .page-info-venue, .page-info-venue-two {
   text-align: center;
   display: flex;
-  height: 10vh;
+  height: 9vh;
 }
 
 .page-info-venue {
@@ -479,12 +481,16 @@ a.header-button {
 }
 
 #input-test-form {
-  height: 40vh;
+  height: 30vh;
   margin-top: 20%;
 }
 
-#input-test-form label{
-  height: 50%;
+#venue-form-input {
+  height: 20vh;
+}
+
+#etcm-holder {
+  height: 6vh;
 }
 
 input[type=text] {
@@ -500,13 +506,14 @@ input {
 .submit-button-positioner {
   display: flex;
   justify-content: center;
-  padding-top: 50%;
+  position: fixed;
+  bottom: 6vh;
+  width: 100%;
 }
 
 .submit-button-positioner-welcome {
   display: flex;
   justify-content: center;
-  padding-top: 10%;
   width: 100vw;
 }
 
@@ -558,6 +565,11 @@ input {
   padding-right: 8vw;
   padding-left: 4vw;
   justify-content: space-around;
+  
+}
+
+.form-radio-box * {
+  font-size: 1em !important;
 }
 
 .form-radio-box label {
@@ -606,4 +618,62 @@ input {
   font-size: 1.4em;
   font-weight: 700;
   padding: 5vh 0px;
+}
+
+#about-the-app {
+  padding-top: 2vh;
+  color: var(--dark-grey);
+  font-size: 0.9em;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+#input-test-code {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  height: 7vh;
+  align-items: center;
+}
+
+#cis-header {
+  height: 18vh;
+  color: white;
+  display: flex;
+}
+
+.success-tick-icon {
+  height: 5vh;
+  padding: 1vh;
+}
+
+#success-page {
+  background-color: var(--dark-green);
+  height: 81vh;
+}
+
+#success-page-info {
+  font-size: 1.3em;
+  width: 80vw;
+  background-color: var(--white);
+  height: auto;
+}
+
+#venue-info {
+  padding: 8vw;
+  margin: auto;
+}
+
+#venue-name {
+  font-size: 1.8em;
+  font-weight: 700;
+  padding: 2vh;
+}
+
+#vci-learn-more {
+  color: var(--dark-grey);
+  font-style: italic;
+  text-decoration: underline;
+  font-size: 0.7em;
+  padding-top: 8vw;
 }

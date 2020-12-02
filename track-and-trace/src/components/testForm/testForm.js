@@ -116,6 +116,9 @@ class testForm extends Component {
                 </div>
               </div>
 
+              <div className="form-row">
+                <p id="about-the-app">About the App</p>
+              </div>
 
               <div className="submit-button-positioner-welcome">
                 <div className="submit-button-holder-welcome">

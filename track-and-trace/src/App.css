@@ -105,6 +105,10 @@ p {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
 }
 
+.submit-button-holder button {
+  text-transform: none !important;
+}
+
 .submit-button-holder {
   height: 8vh
 }
@@ -134,6 +138,13 @@ p {
 
 #vci-header {
   color: white;
+}
+
+#welcome-header {
+  background: var(--dark-grey);
+  color: white;
+  font-size: calc(40px + 2vmin);
+  font-weight: 400;
 }
 
 #venue-button, #vci-header {
@@ -325,6 +336,10 @@ a.header-button {
   margin: auto;
 }
 
+.arrow-icon-holder span {
+  background-color: white;
+}
+
 .iso-data {
   display: flex;
   flex-wrap: wrap;
@@ -451,7 +466,6 @@ input[type=text] {
   border: 1px solid #7D8E9A;
   height: 3vh;
   border-radius: 5px;
-  margin-left: 5vw;
 }
 
 input {
@@ -464,6 +478,93 @@ input {
   padding-top: 50%;
 }
 
+.submit-button-positioner-welcome {
+  display: flex;
+  justify-content: center;
+  padding-top: 10%;
+}
+
 .addit-page {
   height: calc(100vh - 7vh); 
+}
+
+#welcome-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  font-size: 0.9em;
+}
+
+.question {
+  width: 35%;
+  float: left;
+  padding-left: 8vw;
+}
+
+.question p:not(.tut-text), .question label {
+  font-weight: 700;
+}
+
+.form-row {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-items: center;
+  margin-bottom: 3vh;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.form-input {
+  display: flex;
+  float: right;
+  width: 50%;
+  padding-right: 8vw;
+  padding-left: 4vw;
+  justify-content: space-between;
+}
+
+.form-input label {
+  margin: 0px;
+}
+
+.MuiFormControl-root, .MuiTextField-root {
+  display: flex;
+}
+
+.form-header {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-text {
+  width: 60%;
+  margin: auto;
+}
+
+.tut-text {
+  font-style: italic;
+}
+
+#t-and-t {
+  font-weight: 700;
+  color: var(--main-blue);
+  text-decoration: underline;
+  font-style: normal;
+}
+
+.info-img {
+  margin: 0px;
+  height: 15px;
+  width: 15px;
+  padding-left: 1vw;
+}
+
+.form-text {
+  font-size: 1.4em;
+  font-weight: 700;
+  padding: 5vh 0px;
 }

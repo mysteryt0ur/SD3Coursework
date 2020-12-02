@@ -5,14 +5,8 @@ import testIcon from '../images/notepad.png';
 import symptomIcon from '../images/thermometer.png';
 import settingsIcon from '../images/settings.png'
 import aboutIcon from '../images/about.png'
-<<<<<<< HEAD:track-and-trace/src/pages/dashboard/dashboard.js
-import IsoCountdown from '../../components/isoCountdown/isoCountdown'
-import PostcodeChecker from '../../components/postcodeChecker/postcodeChecker'
-
-class Dashboard extends Component {
-=======
 import BackArrow from '../images/left-arrow.png'
-import IsoCountdown from '../components/IsoCountdown'
+import IsoCountdown from '../components/isoCountdown'
 import PostcodeChecker from '../components/postcodeChecker'
 import DashboardHeader from '../components/DashboardHeader';
 import InputTestPage from './input-test-page';
@@ -31,7 +25,6 @@ class Dashboard extends React.Component {
         console.log(newPage)
         this.setState({ activePage: newPage });
     }
->>>>>>> master:track-and-trace/src/pages/dashboard.js
 
     render() {
         return (

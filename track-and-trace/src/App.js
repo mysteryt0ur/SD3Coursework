@@ -1,18 +1,8 @@
+  
 import './App.css';
-<<<<<<< HEAD
-import WelcomePage from './pages/welcome/welcome'
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <span>Track & Trace App</span>
-      </header>
-      <div>
-        <WelcomePage />
-=======
 import React from 'react';
 import Dashboard from './pages/dashboard'
+import WelcomePage from './pages/welcome'
 
 
 class App extends React.Component {
@@ -26,8 +16,7 @@ class App extends React.Component {
   render() {  
     return (
       <div className="App">
-        {this.state.activePage === "dashboard" && <Dashboard/>}
->>>>>>> master
+        <WelcomePage />
       </div>
     );
   }

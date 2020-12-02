@@ -97,15 +97,18 @@ p {
   margin-bottom: 1vh;
 }
 
-.button-one, .button-two, .submit-button-holder {
+.button-one, .button-two, .submit-button-holder, .submit-button-holder-welcome, .MuiButton-label {
   display: flex;
   align-items: center;
   border-radius: 10px;
   width: 42%;
+}
+
+.button-one, .button-two, .submit-button-holder, .submit-button-holder-welcome {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
 }
 
-.submit-button-holder button {
+.submit-button-holder-welcome button {
   text-transform: none !important;
 }
 
@@ -113,19 +116,41 @@ p {
   height: 8vh
 }
 
+.submit-button-holder-welcome {
+  height: 6vh;
+  width: 30vw;
+}
+
 .button-one, .button-two {
   margin-bottom: 5%;
   height: 12vh;
 }
 
-.button {
+.button, button {
   height: 60%;
   display: flex;
   align-items: center;
   border-radius: 10px;
   width: 20%;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
-  font-family: var(--main-font);
+}
+
+button {
+  height: 85%;
+  background-color: white !important;
+  margin-right: 1vw !important;
+  padding: 3vw !important;
+  width: 30vw !important;
+  font-weight: bold !important;
+  margin-left: 1vw !important;
+  font-size: 1em !important;
+  box-shadow: none !important;
+  font-family: var(--main-font) !important;
+  letter-spacing: 0em !important;
+}
+
+.MuiButton-label, .MuiButtonBase-root {
+  background-color: white;
 }
 
 .button-one {
@@ -171,7 +196,7 @@ p {
   background: var(--dark-purple);
 }
 
-.submit-button-holder {
+.submit-button-holder, .submit-button-holder-welcome {
   background: var(--dark-green);
 }
 
@@ -482,6 +507,7 @@ input {
   display: flex;
   justify-content: center;
   padding-top: 10%;
+  width: 100vw;
 }
 
 .addit-page {
@@ -521,8 +547,21 @@ input {
   float: right;
   width: 50%;
   padding-right: 8vw;
-  padding-left: 4vw;
+  padding-left: calc(4vw + 9px);
   justify-content: space-between;
+}
+
+.form-radio-box {
+  display: flex;
+  float: right;
+  width: 50%;
+  padding-right: 8vw;
+  padding-left: 4vw;
+  justify-content: space-around;
+}
+
+.form-radio-box label {
+  margin: 0px;
 }
 
 .form-input label {

@@ -82,7 +82,7 @@ class testForm extends Component {
                   <p className="tut-text">Please tick the appropriate box</p>
                 </div>
 
-                <div className="form-input">
+                <div className="form-radio-box">
                   <MyRadio
                     name="btconsent"
                     type="radio"
@@ -105,7 +105,7 @@ class testForm extends Component {
                   </label>
                   <p className="tut-text" id="t-and-t">terms and conditions</p>
                 </div>
-                <div className="form-input">
+                <div className="form-radio-box">
                   <MyRadio
                     name="tc-consent"
                     type="radio"
@@ -118,7 +118,7 @@ class testForm extends Component {
 
 
               <div className="submit-button-positioner-welcome">
-                <div className="submit-button-holder">
+                <div className="submit-button-holder-welcome">
                   <div className="arrow-icon-holder">
                     <img src={ArrowIcon} alt="arrow-icon" className="arrow-icon-for-button"></img>
                   </div>
@@ -127,8 +127,6 @@ class testForm extends Component {
                   </Button>
                 </div>
               </div>
-              <pre>{JSON.stringify(values, null, 2)}</pre>
-              <pre>{JSON.stringify(errors, null, 2)}</pre>
             </Form>
           )}
         </Formik>

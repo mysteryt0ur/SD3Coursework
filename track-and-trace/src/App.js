@@ -9,14 +9,23 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      activePage: "dashboard"
+      isUserRegistered: "false"
     };
   }
 
   render() {  
     return (
       <div className="App">
-        <WelcomePage />
+        {this.state.isUserRegistered === "false" &&
+          <div>
+            <WelcomePage />
+          </div>
+        } 
+        {this.state.isUserRegistered === "true" &&
+          <div>
+            <Dashboard />
+          </div>
+        }
       </div>
     );
   }

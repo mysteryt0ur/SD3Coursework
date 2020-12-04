@@ -95,13 +95,15 @@ p {
   position: absolute;
   bottom: 0;
   margin-bottom: 1vh;
+  width: 90vw;
 }
 
 .button-one, .button-two, .submit-button-holder, .submit-button-holder-welcome, .MuiButton-label {
   display: flex;
   align-items: center;
   border-radius: 10px;
-  width: 42%;
+  width: 48%;
+  text-align: center;
 }
 
 .button-one, .button-two, .submit-button-holder, .submit-button-holder-welcome {
@@ -114,7 +116,7 @@ p {
 
 .submit-button-holder {
   height: 8vh;
-  margin-right: 8vw;
+  width: 42%;
 }
 
 .submit-button-holder-welcome {
@@ -160,9 +162,10 @@ button {
 
 .button-one span, .button-two span {
   margin: auto;
+  text-align: center;
 }
 
-#vci-header {
+#vci-header, #positive-message, #negative-message {
   color: white;
 }
 
@@ -197,8 +200,17 @@ button {
   background: var(--dark-purple);
 }
 
-.submit-button-holder, .submit-button-holder-welcome {
+.submit-button-holder, .submit-button-holder-welcome, #positive-message, .submit-button-positioner-home, .success-page-holder {
   background: var(--dark-green);
+}
+
+#negative-message {
+  background: var(--red);
+}
+
+#negative-message, #positive-message {
+  padding: 5vw;
+  margin: 0px;
 }
 
 #home-button {
@@ -206,7 +218,7 @@ button {
   margin-right: 0px;
 }
 
-a.main-button, input[type=submit], a.header-button {
+span.main-button, input[type=submit], span.header-button {
   float: right;
   background: var(--white);
   border: 1px solid #fff;
@@ -221,11 +233,21 @@ a.main-button, input[type=submit], a.header-button {
   display: flex;
   align-items: center;
   margin-right: 1vw;
+  text-align: center;
 }
 
-a.main-button, input.submit-button {
+span.main-button, input.submit-button {
   height: 9vh;
   font-size: 1rem;
+}
+
+span.main-button {
+  background-color: white;
+}
+
+.main-button p {
+  text-align: center;
+  margin: auto;
 }
 
 input.submit-button {
@@ -238,7 +260,7 @@ input.submit-button {
   margin: auto;
 }
 
-a.header-button {
+span.header-button {
   height: 30%;
   font-size: 0.8rem;
 }
@@ -443,7 +465,7 @@ a.header-button {
 .page-info-venue, .page-info-venue-two {
   text-align: center;
   display: flex;
-  height: 9vh;
+  height: 10vh;
 }
 
 .page-info-venue {
@@ -462,8 +484,8 @@ a.header-button {
   vertical-align: middle;
   align-items: center;
   margin: auto;
-  height: 90%;
-  width: 90%;
+  height: 35vh;
+  width: 35vh;
   background-color: black;
 }
 
@@ -472,11 +494,13 @@ a.header-button {
   font-style: italic;
   font-weight: 400;
   margin: auto;
+  margin-top: 0.5vh;
+  font-size: 0.9em;
 }
 
 .page-info p, .page-info-venue p {
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: 0px 10%;
 }
 
@@ -489,8 +513,12 @@ a.header-button {
   height: 20vh;
 }
 
-#etcm-holder {
-  height: 6vh;
+#vci-other-input-option {
+  height: 4vh;
+}
+
+#vci-other-input-option * {
+  margin: auto;
 }
 
 input[type=text] {
@@ -508,7 +536,14 @@ input {
   justify-content: center;
   position: fixed;
   bottom: 6vh;
+  width: 90%;
+}
+
+.submit-button-positioner-home {
+  display: flex;
+  justify-content: center;
   width: 100%;
+  padding-bottom: 9vh;
 }
 
 .submit-button-positioner-welcome {
@@ -632,8 +667,13 @@ input {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
-  height: 7vh;
+  height: 10vh;
   align-items: center;
+  font-size: 0.9em;
+}
+
+#input-test-code p {
+  font-weight: 700;
 }
 
 #cis-header {
@@ -649,14 +689,18 @@ input {
 
 #success-page {
   background-color: var(--dark-green);
-  height: 81vh;
+  height: 70vh;
 }
 
 #success-page-info {
   font-size: 1.3em;
   width: 80vw;
   background-color: var(--white);
-  height: auto;
+  height: 50vh;
+}
+
+.success-page-holder {
+  height: calc(100vh - 24vh);
 }
 
 #venue-info {

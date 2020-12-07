@@ -1,7 +1,6 @@
 import React from 'react';
 import ArrowIcon from '../images/arrow.png'
 import SuccessTick from '../images/tick.png'
-import BackArrowIcon from '../images/left-arrow.png'
 
 class VenueCheckIn extends React.Component {
     constructor() {

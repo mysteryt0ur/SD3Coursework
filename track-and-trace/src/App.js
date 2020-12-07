@@ -11,7 +11,8 @@ class App extends React.Component {
     super();
     this.state = {
       isUserRegistered: "true",
-      matchFound: ""
+      matchFound: "",
+      isAppLoading: true,
     };
   }
 
@@ -25,31 +26,41 @@ class App extends React.Component {
     // }
   }
 
-  componentDidMount() {
-    this.getProximityInfo()
+  asyncCall = () => {
+    console.log(this.state.isAppLoading)
+    return new Promise((resolve) => setTimeout(() => resolve(), 2500));
   }
 
-  render() {  
-    return (
-      <div className="App">
-        {this.state.isUserRegistered === "false" &&
-          <div>
-            <WelcomePage />
-          </div>
-        }
-        {this.state.matchFound === "true" &&
-          <div>
-            <ProximityNotification />
-          </div>
-        } 
-        {this.state.isUserRegistered === "true" &&
-          <div>
-            <Dashboard />
-          </div>
-        }
-      </div>
-    );
+  componentDidMount() {
+    console.log(this.state.isAppLoading)
+    this.asyncCall().then(() => this.setState({ isAppLoading: false }));
   }
-}
+
+  render() { 
+    if (this.state.isAppLoading) { 
+      return null
+    } else 
+      return (
+        <div className="App">
+          {this.state.isUserRegistered === "false" &&
+            <div>
+              <WelcomePage />
+            </div>
+          }
+          {this.state.matchFound === "true" &&
+            <div>
+              <ProximityNotification />
+            </div>
+          } 
+          {this.state.isUserRegistered === "true" &&
+            <div>
+              <Dashboard />
+            </div>
+          }
+        </div>
+      );
+    }
+  }
+
 
 export default App;

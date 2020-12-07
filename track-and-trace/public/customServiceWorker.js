@@ -1,7 +1,6 @@
 var CACHE_NAME = 'pwa-trace-and-trace';
 var urlsToCache = [
   '/',
-  '/completed'
 ];
 
 // Install a service worker
@@ -33,7 +32,7 @@ self.addEventListener('fetch', event => {
 
 // Update a service worker
 self.addEventListener('activate', event => {
-  var cacheWhitelist = ['pwa-task-manager'];
+  var cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
@@ -45,4 +44,28 @@ self.addEventListener('activate', event => {
       );
     })
   );
+});
+
+self.addEventListener('notificationclose', function (e) {
+  var notification = e.notification;
+  var data = notification.data || {};
+  var primaryKey = data.primaryKey;
+  console.debug('Closed notification: ' + primaryKey);
+});
+
+self.addEventListener('notificationclick', function(e) {
+  var notification = e.notification;
+  var data = notification.data || {};
+  var primaryKey = data.primaryKey;
+  var action = e.action;
+  console.debug('Clicked notification: ' + primaryKey);
+  if (action === 'close') {
+    console.debug('Notification clicked and closed', primaryKey);
+    notification.close();
+  } 
+  else {
+    console.debug('Notification actioned', primaryKey);
+    clients.openWindow('/');
+    notification.close();
+  }
 });

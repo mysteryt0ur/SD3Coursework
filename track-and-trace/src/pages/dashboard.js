@@ -11,6 +11,7 @@ import PostcodeChecker from '../components/postcodeChecker'
 import DashboardHeader from '../components/DashboardHeader';
 import InputTestPage from './input-test-page';
 import VenueCheckIn from './venue-check-in';
+import AboutSignOut from './about-and-sign-out';
 
 class Dashboard extends React.Component {
     constructor() {
@@ -65,10 +66,10 @@ class Dashboard extends React.Component {
                                         <p>Settings</p>
                                     </span>
                                 </div>
-                                <div className="button-two" id="about-button">
+                                <div className="button-two" id="about-button" onClick={() => this.showPage("aboutPage")}>
                                     <img src={aboutIcon} alt="about-icon" id="about-icon"></img>
                                     <span className="main-button">
-                                        <p>About</p>
+                                        <p>About & Uninstall</p>
                                     </span>
                                 </div>
                             </div>
@@ -98,7 +99,7 @@ class Dashboard extends React.Component {
 
                 {this.state.activePage === "venueCheckIn" && 
                     <div>
-                        <VenueCheckIn/>
+                        <VenueCheckIn />
                         <div className="submit-button-positioner-home">
                             <div className="submit-button-holder" id="home-button" onClick={() => this.showPage("dashboard")}>
                                 <div className="arrow-icon-holder">
@@ -107,6 +108,12 @@ class Dashboard extends React.Component {
                                 <input className="submit-button" type="submit" value="Home" />
                             </div>
                         </div>
+                    </div>
+                }
+
+                {this.state.activePage === "aboutPage" && 
+                    <div>
+                        <AboutSignOut />
                     </div>
                 }
             </div>

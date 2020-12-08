@@ -24,10 +24,15 @@ const MyTextField = ({ placeholder, ...props }) => {
 };
 
 const validationSchema = yup.object({
-  genloc: yup.string().required().max(4),
+  genloc: yup.string().required().min(3).max(4),
   btconsent: yup.string().required(),
-  tcconsent: yup.string().required(),
+  tcconsent: yup.string().required().matches("Yes"),
 });
+
+const SignUserUp = () => {
+  console.log("hello")
+  return localStorage.setItem('tandt-regStatus', 'true');
+}
 
 class testForm extends Component {
   render() {
@@ -40,7 +45,7 @@ class testForm extends Component {
         </div>
         <Formik
           initialValues={{
-            genloc: "",
+            postcode: "",
             btconsent: "",
             tcconsent: "",
           }}
@@ -65,7 +70,7 @@ class testForm extends Component {
                   <MyTextField
                     className="form-text-input"
                     placeholder="postcode characters"
-                    name="genloc"
+                    name="postcode"
                     type="input"
                     as={TextField}
                   />
@@ -125,7 +130,7 @@ class testForm extends Component {
                   <div className="arrow-icon-holder">
                     <img src={ArrowIcon} alt="arrow-icon" className="arrow-icon-for-button"></img>
                   </div>
-                  <Button disabled={isSubmitting} className="submit-button" type="submit">
+                  <Button disabled={isSubmitting} className="submit-button" type="submit" onClick={() => SignUserUp()}>
                   Continue
                   </Button>
                 </div>

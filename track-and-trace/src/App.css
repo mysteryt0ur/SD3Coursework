@@ -27,6 +27,12 @@
   --icon-size: 25px;
 }
 
+html, body {
+  margin: 0; 
+  height: 100%; 
+  overflow: hidden
+}
+
 body:not(.App-header) {
   font-family: var(--main-font);
 }

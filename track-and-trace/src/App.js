@@ -1,30 +1,22 @@
-  
 import './App.css';
 import React from 'react';
 import Dashboard from './pages/dashboard'
 import WelcomePage from './pages/welcome'
 import ProximityNotification from './components/ProximityNotification'
-import Firebase from 'firebase'
-import config from './firebase'
-import sha256 from 'crypto-js/sha256';
-import hmacSHA512 from 'crypto-js/hmac-sha512';
-import Base64 from 'crypto-js/enc-base64';
+//import sha256 from 'crypto-js/sha256';
+//import hmacSHA512 from 'crypto-js/hmac-sha512';
+//import Base64 from 'crypto-js/enc-base64';
 var CryptoJS = require("crypto-js");
-var axios = require('axios');
 
 class App extends React.Component {
   constructor() {
     super();
-    if (!Firebase.apps.length) {
-      Firebase.initializeApp(config);
-    } else {
-      Firebase.app(); // if already initialized, use that one
-    }
     this.state = {
       isUserRegistered: true,
       matchFound: "",
+      postcode: "",
       isAppLoading: true,
-    };
+    };  
   }
 
   getRandomCode = () => {
@@ -42,35 +34,32 @@ class App extends React.Component {
 
   getAppCode = () => {
     if ("tandt-appName" in localStorage) {
+      console.log("an app code exists so starting get flagged accounts")
       let appCode = localStorage.getItem('tandt-appName')
-      console.log(appCode)
-      this.getFlaggedAccounts(appCode)
+      //this.getFlaggedAccounts(appCode)
     } else {
       let newCode = this.getRandomCode()
+      console.log("no app code exists")
       localStorage.setItem('tandt-appName', newCode)
     }
   }
 
-  getFlaggedAccounts = (appCode) => {
-    let data = '{"1": ' + appCode + '}';
+  // getFlaggedAccounts = (appCode) => {
+  //   var myHeaders = new Headers();
+  //   myHeaders.append("Content-Type", "text/plain");
+  //   var raw = "{\"1\": \"" + appCode + "\"}";
+  //   var requestOptions = {
+  //     method: 'POST',
+  //     headers: myHeaders,
+  //     body: raw,
+  //     redirect: 'follow'
+  //   };
 
-    var config = {
-      method: 'post',
-      url: 'https://tandt-flagged-accounts-api.web-sandpit.sandpit.rscomp.systems/',
-      headers: { 
-        'Content-Type': 'text/plain'
-      },
-      data : data
-    };
-    
-    axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
+  //   fetch("https://tandt-flagged-accounts-api.web-sandpit.sandpit.rscomp.systems/", requestOptions)
+  //   .then(response => response.text())
+  //   .then(result => console.log(result, "this is the result for the get flagged accounts section"))
+  //   .catch(error => console.log('error', error));
+  // }
 
   getProximityInfo = () => {
     setInterval(() => {
@@ -112,9 +101,11 @@ class App extends React.Component {
   componentDidMount() {
     this.timeToRender().then(() => this.setState({ isAppLoading: false }));
     setTimeout(() => {
-      this.getRegistrationStatus();
       this.getAppCode();
     }, 500)
+    setInterval(() => {
+      this.getRegistrationStatus();
+    }, 2000)
   }
 
   render() { 

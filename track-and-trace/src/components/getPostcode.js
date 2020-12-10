@@ -4,12 +4,12 @@ class GetPostcode extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            userPostcode: 'NN17'
+            userPostcode: this.props.postcode
         };
     }
 
     getUserPostcode = () => {
-        return this.state.userPostcode
+        return this.state.userPostcode.toUpperCase()
     }
 
     render() {

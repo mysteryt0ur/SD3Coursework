@@ -8,8 +8,30 @@ class DangerLevel extends React.Component {
         };
     }
 
+    getPostcodeInfo = () => {
+        let upperCasePostcode = this.props.postcode.toUpperCase();
+        var myHeaders = new Headers();
+        myHeaders.append("postcode", upperCasePostcode);
+        myHeaders.append("Content-Type", "application/json");
+
+        var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+        };
+
+        fetch("https://postcode-data-api.web-sandpit.sandpit.rscomp.systems", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    }
+
     getDangerLevel = () => {
         return this.state.dangerLevel
+    }
+
+    componentDidMount() {
+        this.getPostcodeInfo();
     }
 
     render() {

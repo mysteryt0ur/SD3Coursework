@@ -46,10 +46,15 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous">
+    </script>
+     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-messaging.js"></script>
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
-          navigator.serviceWorker.register('customServiceWorker.js').then(function(registration) {
+          navigator.serviceWorker.register('firebase-messaging-sw.js').then(function(registration) {
             console.log('Worker registration successful', registration.scope);
           }, function(err) {
             console.log('Worker registration failed', err);
@@ -61,7 +66,19 @@
         console.log('Service Worker is not supported by browser.');
       }
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
-    <script src="/__/firebase/init.js"></script>
+      <script>
+        let Config = {
+          apiKey: "AIzaSyCBvDLuXO2iRapUI5YcT0UBORg_kCaw9-Y",
+          authDomain: "tandt-sd3-coursework.firebaseapp.com",
+          projectId: "tandt-sd3-coursework",
+          storageBucket: "tandt-sd3-coursework.appspot.com",
+          messagingSenderId: "1004202986816",
+          appId: "1:1004202986816:web:2c24e6d948e9a2bb29fea5",
+          measurementId: "G-28TPLE5PW3"
+        };
+
+        firebase.initializeApp(Config);
+
+    </script>
   </body>
 </html>

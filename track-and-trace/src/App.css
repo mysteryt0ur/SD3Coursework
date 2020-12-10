@@ -748,3 +748,7 @@ input {
   font-size: 0.7em;
   padding-top: 8vw;
 }
+
+.MuiIconButton-colorSecondary {
+  color: var(--main-blue) !important;
+}

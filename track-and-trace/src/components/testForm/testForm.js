@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Formik, Form, useField } from "formik";
 import { TextField, Radio, FormControlLabel, Button } from "@material-ui/core";
 import * as yup from "yup";
@@ -29,12 +29,15 @@ const validationSchema = yup.object({
   tcconsent: yup.string().required().matches("Yes"),
 });
 
-const SignUserUp = () => {
-  console.log("hello")
-  return localStorage.setItem('tandt-regStatus', 'true');
+const SignUserUp = (values) => {
+  console.log(values)
+  let setRegStatus = localStorage.setItem('tandt-regStatus', 'true');
+  let setPostcode = localStorage.setItem('tandt-postcode', values.postcode);
+  let setBTStatus = localStorage.setItem('tandt-BTStatus', values.btconsent);
+  return setRegStatus, setPostcode, setBTStatus
 }
 
-class testForm extends Component {
+class testForm extends React.Component {
   render() {
     return (
       <div>
@@ -130,7 +133,7 @@ class testForm extends Component {
                   <div className="arrow-icon-holder">
                     <img src={ArrowIcon} alt="arrow-icon" className="arrow-icon-for-button"></img>
                   </div>
-                  <Button disabled={isSubmitting} className="submit-button" type="submit" onClick={() => SignUserUp()}>
+                  <Button disabled={isSubmitting} className="submit-button" type="submit" onClick={() => SignUserUp(values)}>
                   Continue
                   </Button>
                 </div>

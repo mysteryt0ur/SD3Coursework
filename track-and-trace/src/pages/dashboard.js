@@ -17,7 +17,8 @@ class Dashboard extends React.Component {
     constructor() {
         super();
         this.state = {
-            activePage: "dashboard"
+            activePage: "dashboard",
+            postcode: "empty"
         };
         this.showPage = this.showPage.bind(this);
     }
@@ -27,16 +28,24 @@ class Dashboard extends React.Component {
         this.setState({ activePage: newPage });
     }
 
+    componentDidMount() {
+        setTimeout(() => {
+            let getPostcode = localStorage.getItem('tandt-postcode')
+            this.setState({ postcode: getPostcode })
+            console.log(this.state.postcode)
+          }, 500)
+      }
+
     render() {
         return (
             <div>
-                {this.state.activePage === "dashboard" && 
+                {this.state.activePage === "dashboard" && this.state.postcode !== "empty" &&
                 <div>
                 <DashboardHeader />
                     <div className="content-inner">
                         <div id="responsive-dashboard">
                             <IsoCountdown />
-                            <PostcodeChecker />
+                            <PostcodeChecker postcode={this.state.postcode} />
                         </div>
                         <div id="button-holder">
                             <div className="row">

@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      isUserRegistered: true,
+      isUserRegistered: false,
       matchFound: "",
       postcode: "",
       isAppLoading: true,
@@ -33,33 +33,49 @@ class App extends React.Component {
   }
 
   getAppCode = () => {
+    let appCode = localStorage.getItem('tandt-appName')
     if ("tandt-appName" in localStorage) {
       console.log("an app code exists so starting get flagged accounts")
-      let appCode = localStorage.getItem('tandt-appName')
-      //this.getFlaggedAccounts(appCode)
     } else {
       let newCode = this.getRandomCode()
       console.log("no app code exists")
       localStorage.setItem('tandt-appName', newCode)
     }
+    this.checkingForAppCode(appCode)
   }
 
-  // getFlaggedAccounts = (appCode) => {
-  //   var myHeaders = new Headers();
-  //   myHeaders.append("Content-Type", "text/plain");
-  //   var raw = "{\"1\": \"" + appCode + "\"}";
-  //   var requestOptions = {
-  //     method: 'POST',
-  //     headers: myHeaders,
-  //     body: raw,
-  //     redirect: 'follow'
-  //   };
+  // check every 10 seconds to see if any new cases have arisen
+  checkingForAppCode = (appCode) => {
+    let checkingForCases = setInterval(() => {
+      this.getFlaggedAccounts(appCode);
+      console.log("checking reg status" + localStorage.getItem('tandt-appName'))
+    }, 10000)
 
-  //   fetch("https://tandt-flagged-accounts-api.web-sandpit.sandpit.rscomp.systems/", requestOptions)
-  //   .then(response => response.text())
-  //   .then(result => console.log(result, "this is the result for the get flagged accounts section"))
-  //   .catch(error => console.log('error', error));
-  // }
+    if (this.state.matchFound !== "") {
+      this.logCase()
+      clearInterval(checkingForCases)
+    } else 
+      return checkingForCases()
+  }
+
+  getFlaggedAccounts = (appCode) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "text/plain");
+    var raw = "{\"1\": \"" + appCode + "\"}";
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    console.log("get flagged accounts is being ran")
+
+    fetch("https://tandt-flagged-accounts-api.web-sandpit.sandpit.rscomp.systems/", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result, "this is the result for the get flagged accounts section"))
+    .catch(error => console.log('error', error));
+  }
 
   getProximityInfo = () => {
     setInterval(() => {
@@ -126,7 +142,7 @@ class App extends React.Component {
           } 
           {this.state.isUserRegistered === true &&
             <div>
-              <Dashboard />
+              <Dashboard userReg={this.state.isUserRegistered}/>
             </div>
           }
         </div>

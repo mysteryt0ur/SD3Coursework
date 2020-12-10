@@ -34,7 +34,7 @@ const SignUserUp = (values) => {
   let setRegStatus = localStorage.setItem('tandt-regStatus', 'true');
   let setPostcode = localStorage.setItem('tandt-postcode', values.postcode);
   let setBTStatus = localStorage.setItem('tandt-BTStatus', values.btconsent);
-  return setRegStatus, setPostcode, setBTStatus
+  return setRegStatus && setPostcode && setBTStatus
 }
 
 class testForm extends React.Component {

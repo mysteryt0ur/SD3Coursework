@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Formik, Form, useField } from "formik";
 import { TextField, Radio, FormControlLabel, Button } from "@material-ui/core";
 import * as yup from "yup";
@@ -24,12 +24,20 @@ const MyTextField = ({ placeholder, ...props }) => {
 };
 
 const validationSchema = yup.object({
-  genloc: yup.string().required().max(4),
+  genloc: yup.string().required().min(3).max(4),
   btconsent: yup.string().required(),
-  tcconsent: yup.string().required(),
+  tcconsent: yup.string().required().matches("Yes"),
 });
 
-class testForm extends Component {
+const SignUserUp = (values) => {
+  console.log(values)
+  let setRegStatus = localStorage.setItem('tandt-regStatus', 'true');
+  let setPostcode = localStorage.setItem('tandt-postcode', values.postcode);
+  let setBTStatus = localStorage.setItem('tandt-BTStatus', values.btconsent);
+  return setRegStatus && setPostcode && setBTStatus
+}
+
+class testForm extends React.Component {
   render() {
     return (
       <div>
@@ -40,7 +48,7 @@ class testForm extends Component {
         </div>
         <Formik
           initialValues={{
-            genloc: "",
+            postcode: "",
             btconsent: "",
             tcconsent: "",
           }}
@@ -65,7 +73,7 @@ class testForm extends Component {
                   <MyTextField
                     className="form-text-input"
                     placeholder="postcode characters"
-                    name="genloc"
+                    name="postcode"
                     type="input"
                     as={TextField}
                   />
@@ -82,7 +90,7 @@ class testForm extends Component {
                   <p className="tut-text">Please tick the appropriate box</p>
                 </div>
 
-                <div className="form-input">
+                <div className="form-radio-box">
                   <MyRadio
                     name="btconsent"
                     type="radio"
@@ -105,7 +113,7 @@ class testForm extends Component {
                   </label>
                   <p className="tut-text" id="t-and-t">terms and conditions</p>
                 </div>
-                <div className="form-input">
+                <div className="form-radio-box">
                   <MyRadio
                     name="tc-consent"
                     type="radio"
@@ -116,19 +124,20 @@ class testForm extends Component {
                 </div>
               </div>
 
+              <div className="form-row">
+                <p id="about-the-app">About the App</p>
+              </div>
 
               <div className="submit-button-positioner-welcome">
-                <div className="submit-button-holder">
+                <div className="submit-button-holder-welcome">
                   <div className="arrow-icon-holder">
                     <img src={ArrowIcon} alt="arrow-icon" className="arrow-icon-for-button"></img>
                   </div>
-                  <Button disabled={isSubmitting} className="submit-button" type="submit">
+                  <Button disabled={isSubmitting} className="submit-button" type="submit" onClick={() => SignUserUp(values)}>
                   Continue
                   </Button>
                 </div>
               </div>
-              <pre>{JSON.stringify(values, null, 2)}</pre>
-              <pre>{JSON.stringify(errors, null, 2)}</pre>
             </Form>
           )}
         </Formik>

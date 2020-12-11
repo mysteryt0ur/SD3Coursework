@@ -27,6 +27,12 @@
   --icon-size: 25px;
 }
 
+html, body {
+  margin: 0; 
+  height: 100%; 
+  overflow: hidden
+}
+
 body:not(.App-header) {
   font-family: var(--main-font);
 }
@@ -42,6 +48,27 @@ p {
 
 .App {
   text-align: center;
+}
+
+.loader:empty {
+  position: absolute;
+  top: calc(50% - 4em);
+  left: calc(50% - 4em);
+  width: 6em;
+  height: 6em !important;
+  border: 1.1em solid rgba(0, 0, 0, 0.2);
+  border-left: 1.1em solid #000000;
+  border-radius: 50%;
+  animation: load8 1.1s infinite linear;
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .App-header {
@@ -95,22 +122,33 @@ p {
   position: absolute;
   bottom: 0;
   margin-bottom: 1vh;
+  width: 90vw;
 }
 
-.button-one, .button-two, .submit-button-holder {
+.button-one, .button-two, .submit-button-holder, .submit-button-holder-welcome, .MuiButton-label {
   display: flex;
   align-items: center;
   border-radius: 10px;
-  width: 42%;
+  width: 48%;
+  text-align: center;
+}
+
+.button-one, .button-two, .submit-button-holder, .submit-button-holder-welcome {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
 }
 
-.submit-button-holder button {
+.submit-button-holder-welcome button {
   text-transform: none !important;
 }
 
 .submit-button-holder {
-  height: 8vh
+  height: 8vh;
+  width: 42%;
+}
+
+.submit-button-holder-welcome {
+  height: 6vh;
+  width: 30vw;
 }
 
 .button-one, .button-two {
@@ -118,14 +156,31 @@ p {
   height: 12vh;
 }
 
-.button {
+.button, button {
   height: 60%;
   display: flex;
   align-items: center;
   border-radius: 10px;
   width: 20%;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
-  font-family: var(--main-font);
+}
+
+button {
+  height: 85%;
+  background-color: white !important;
+  margin-right: 1vw !important;
+  padding: 3vw !important;
+  width: 30vw !important;
+  font-weight: bold !important;
+  margin-left: 1vw !important;
+  font-size: 1em !important;
+  box-shadow: none !important;
+  font-family: var(--main-font) !important;
+  letter-spacing: 0em !important;
+}
+
+.MuiButton-label, .MuiButtonBase-root {
+  background-color: white;
 }
 
 .button-one {
@@ -134,9 +189,10 @@ p {
 
 .button-one span, .button-two span {
   margin: auto;
+  text-align: center;
 }
 
-#vci-header {
+#vci-header, #positive-message, #negative-message {
   color: white;
 }
 
@@ -147,7 +203,7 @@ p {
   font-weight: 400;
 }
 
-#venue-button, #vci-header {
+#venue-button, #vci-header, #pending-alert {
   background: var(--dark-blue);
 }
 
@@ -171,15 +227,25 @@ p {
   background: var(--dark-purple);
 }
 
-.submit-button-holder {
+.submit-button-holder, .submit-button-holder-welcome, #positive-message, .submit-button-positioner-home, .success-page-holder {
   background: var(--dark-green);
+}
+
+#negative-message {
+  background: var(--red);
+}
+
+#negative-message, #positive-message {
+  padding: 5vw;
+  margin: 0px;
 }
 
 #home-button {
   background: var(--orange);
+  margin-right: 0px;
 }
 
-a.main-button, input[type=submit], a.header-button {
+span.main-button, input[type=submit], span.header-button {
   float: right;
   background: var(--white);
   border: 1px solid #fff;
@@ -194,11 +260,21 @@ a.main-button, input[type=submit], a.header-button {
   display: flex;
   align-items: center;
   margin-right: 1vw;
+  text-align: center;
 }
 
-a.main-button, input.submit-button {
+span.main-button, input.submit-button {
   height: 9vh;
   font-size: 1rem;
+}
+
+span.main-button {
+  background-color: white;
+}
+
+.main-button p {
+  text-align: center;
+  margin: auto;
 }
 
 input.submit-button {
@@ -211,7 +287,7 @@ input.submit-button {
   margin: auto;
 }
 
-a.header-button {
+span.header-button {
   height: 30%;
   font-size: 0.8rem;
 }
@@ -279,6 +355,11 @@ a.header-button {
 .dashboard-container {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
   margin: 8% 0px;
+}
+
+.dashboard-container-big {
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+  margin: 26% 0px;
 }
 
 .iso-info, .addit-info {
@@ -435,8 +516,8 @@ a.header-button {
   vertical-align: middle;
   align-items: center;
   margin: auto;
-  height: 90%;
-  width: 90%;
+  height: 35vh;
+  width: 35vh;
   background-color: black;
 }
 
@@ -445,21 +526,31 @@ a.header-button {
   font-style: italic;
   font-weight: 400;
   margin: auto;
+  margin-top: 0.5vh;
+  font-size: 0.9em;
 }
 
 .page-info p, .page-info-venue p {
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: 0px 10%;
 }
 
 #input-test-form {
-  height: 40vh;
+  height: 30vh;
   margin-top: 20%;
 }
 
-#input-test-form label{
-  height: 50%;
+#venue-form-input {
+  height: 20vh;
+}
+
+#vci-other-input-option {
+  height: 4vh;
+}
+
+#vci-other-input-option * {
+  margin: auto;
 }
 
 input[type=text] {
@@ -475,13 +566,22 @@ input {
 .submit-button-positioner {
   display: flex;
   justify-content: center;
-  padding-top: 50%;
+  position: fixed;
+  bottom: 6vh;
+  width: 90%;
+}
+
+.submit-button-positioner-home {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 9vh;
 }
 
 .submit-button-positioner-welcome {
   display: flex;
   justify-content: center;
-  padding-top: 10%;
+  width: 100vw;
 }
 
 .addit-page {
@@ -521,8 +621,26 @@ input {
   float: right;
   width: 50%;
   padding-right: 8vw;
-  padding-left: 4vw;
+  padding-left: calc(4vw + 9px);
   justify-content: space-between;
+}
+
+.form-radio-box {
+  display: flex;
+  float: right;
+  width: 50%;
+  padding-right: 8vw;
+  padding-left: 4vw;
+  justify-content: space-around;
+  
+}
+
+.form-radio-box * {
+  font-size: 1em !important;
+}
+
+.form-radio-box label {
+  margin: 0px;
 }
 
 .form-input label {
@@ -567,4 +685,75 @@ input {
   font-size: 1.4em;
   font-weight: 700;
   padding: 5vh 0px;
+}
+
+#about-the-app {
+  padding-top: 2vh;
+  color: var(--dark-grey);
+  font-size: 0.9em;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+#input-test-code {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  height: 10vh;
+  align-items: center;
+  font-size: 0.9em;
+}
+
+#input-test-code p {
+  font-weight: 700;
+}
+
+#cis-header {
+  height: 18vh;
+  color: white;
+  display: flex;
+}
+
+.success-tick-icon {
+  height: 5vh;
+  padding: 1vh;
+}
+
+#success-page {
+  background-color: var(--dark-green);
+  height: 70vh;
+}
+
+#success-page-info {
+  font-size: 1.3em;
+  width: 80vw;
+  background-color: var(--white);
+  height: 50vh;
+}
+
+.success-page-holder {
+  height: calc(100vh - 24vh);
+}
+
+#venue-info {
+  padding: 8vw;
+  margin: auto;
+}
+
+#venue-name {
+  font-size: 1.8em;
+  font-weight: 700;
+  padding: 2vh;
+}
+
+#vci-learn-more {
+  color: var(--dark-grey);
+  font-style: italic;
+  text-decoration: underline;
+  font-size: 0.7em;
+  padding-top: 8vw;
+}
+
+.MuiIconButton-colorSecondary {
+  color: var(--main-blue) !important;
 }

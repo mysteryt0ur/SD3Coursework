@@ -1,17 +1,12 @@
 import React from 'react';
 
-class CountdownInfo extends React.Component {
+class ProximityNotification extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             daysLeft: 7,
             hoursLeft: 1
         };
-    }
-
-    getTimeLeft = () => {
-        let timeOfMatch = this.props.matchTime
-        console.log(timeOfMatch)
     }
 
     getDayInfo = () => {
@@ -60,4 +55,4 @@ class CountdownInfo extends React.Component {
     }
 }
 
-export default CountdownInfo;
+export default ProximityNotification;

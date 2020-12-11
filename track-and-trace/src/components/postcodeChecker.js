@@ -9,7 +9,7 @@ class PostcodeChecker extends React.Component {
     render() {
         return (
             <div>
-                <div className="dashboard-container">
+                <div className={"dashboard-container" + (this.props.matchFound ? null : "-big")}>
                     <div className="dashboard-header">
                         <span>My Area Statistics</span>
                     </div>
@@ -19,9 +19,9 @@ class PostcodeChecker extends React.Component {
                         </div>
                         <div className="postcode-details">
                             <p>The risk level in</p>
-                            <GetPostcode />
+                            <GetPostcode postcode={this.props.postcode} />
                             <p>is</p>
-                            <DangerLevel />
+                            <DangerLevel postcode={this.props.postcode} userReg={this.props.userReg}/>
                         </div>
                         <div className="addit-info">
                             <div>

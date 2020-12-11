@@ -203,7 +203,7 @@ button {
   font-weight: 400;
 }
 
-#venue-button, #vci-header {
+#venue-button, #vci-header, #pending-alert {
   background: var(--dark-blue);
 }
 
@@ -355,6 +355,11 @@ span.header-button {
 .dashboard-container {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
   margin: 8% 0px;
+}
+
+.dashboard-container-big {
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+  margin: 26% 0px;
 }
 
 .iso-info, .addit-info {

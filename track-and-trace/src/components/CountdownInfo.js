@@ -9,6 +9,11 @@ class CountdownInfo extends React.Component {
         };
     }
 
+    getTimeLeft = () => {
+        let timeOfMatch = this.props.matchTime
+        console.log(timeOfMatch)
+    }
+
     getDayInfo = () => {
         return this.state.daysLeft
     }

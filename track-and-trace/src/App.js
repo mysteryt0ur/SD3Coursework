@@ -13,9 +13,10 @@ class App extends React.Component {
     super();
     this.state = {
       isUserRegistered: false,
-      matchFound: "",
+      matchFound: false,
       postcode: "",
       isAppLoading: true,
+      timeOfMatch: null
     };  
   }
 
@@ -36,26 +37,25 @@ class App extends React.Component {
     let appCode = localStorage.getItem('tandt-appName')
     if ("tandt-appName" in localStorage) {
       console.log("an app code exists so starting get flagged accounts")
+      this.checkingForAppCode(appCode)
     } else {
       let newCode = this.getRandomCode()
       console.log("no app code exists")
       localStorage.setItem('tandt-appName', newCode)
     }
-    this.checkingForAppCode(appCode)
   }
 
   // check every 10 seconds to see if any new cases have arisen
   checkingForAppCode = (appCode) => {
     let checkingForCases = setInterval(() => {
       this.getFlaggedAccounts(appCode);
-      console.log("checking reg status" + localStorage.getItem('tandt-appName'))
-    }, 10000)
+      console.log("checking reg status for " + localStorage.getItem('tandt-appName'))
+    }, 5000)
 
-    if (this.state.matchFound !== "") {
-      this.logCase()
+    if (this.state.matchFound === true) {
       clearInterval(checkingForCases)
     } else 
-      return checkingForCases()
+      return checkingForCases
   }
 
   getFlaggedAccounts = (appCode) => {
@@ -73,7 +73,7 @@ class App extends React.Component {
 
     fetch("https://tandt-flagged-accounts-api.web-sandpit.sandpit.rscomp.systems/", requestOptions)
     .then(response => response.text())
-    .then(result => console.log(result, "this is the result for the get flagged accounts section"))
+    .then(result => this.checkingForCases(result))
     .catch(error => console.log('error', error));
   }
 
@@ -84,6 +84,33 @@ class App extends React.Component {
 
     // if (proximity data shows a match) {
       // this.setState({ matchFound = "true" })
+    // }
+  }
+
+  checkingForCases = (caseData) => {
+    let date = Date.now();
+    let dateOfMatch = new Date(date)
+    let convertedResults = JSON.parse(caseData);
+    console.log(dateOfMatch)
+    let splitDOMDay = dateOfMatch.getDate();
+    let splitDOMHour = dateOfMatch.getHours();
+    console.log("Time details about when the match was found: " + splitDOMDay + ", " + splitDOMHour)
+    let matchDayAndHour = splitDOMDay + ", " + splitDOMHour
+
+    if (convertedResults.confirmedCases >= 0 || convertedResults.selfDiagnosis >= 1) {
+      this.setState({ timeOfMatch: dateOfMatch })
+      setTimeout(() => {
+        this.setState({ matchFound: true })
+        console.log(this.state.matchFound)
+        console.log(this.state.timeOfMatch)
+      }, 1500)
+    }
+
+
+    // replace with below code after testing 
+    // if (convertedResults.confirmedCases >= 1 || convertedResults.selfDiagnosis >= 1) {
+    //   this.setState({ matchFound: true })
+    //   this.setState({ timeOfMatch: dateInfo })
     // }
   }
 
@@ -116,12 +143,18 @@ class App extends React.Component {
 
   componentDidMount() {
     this.timeToRender().then(() => this.setState({ isAppLoading: false }));
-    setTimeout(() => {
-      this.getAppCode();
-    }, 500)
-    setInterval(() => {
-      this.getRegistrationStatus();
-    }, 2000)
+    if (this.state.matchFound === false) {
+      setTimeout(() => {
+        this.getAppCode();
+      }, 500)
+      setInterval(() => {
+        this.getRegistrationStatus();
+      }, 2000)
+    }
+  }
+
+  logCase() {
+    return console.log("howdy")
   }
 
   render() { 
@@ -135,14 +168,19 @@ class App extends React.Component {
               <WelcomePage />
             </div>
           }
-          {this.state.matchFound === true &&
+          {/* {this.state.matchFound === true &&
             <div>
               <ProximityNotification />
             </div>
-          } 
-          {this.state.isUserRegistered === true &&
+          }  */}
+          {this.state.isUserRegistered === true && this.state.matchTime === null &&
             <div>
-              <Dashboard userReg={this.state.isUserRegistered}/>
+              <Dashboard userReg={this.state.isUserRegistered} matchStatus={this.state.matchFound}/>
+            </div>
+          }
+          {this.state.isUserRegistered === true && this.state.matchFound === true &&
+            <div>
+              <Dashboard userReg={this.state.isUserRegistered} matchStatus={this.state.matchFound} matchTime={this.state.timeOfMatch}/>
             </div>
           }
         </div>

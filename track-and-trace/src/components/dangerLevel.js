@@ -4,70 +4,75 @@ class DangerLevel extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            dangerLevel: 2
+            dangerLevel: ""
         };
     }
 
-    // getPostcodeInfo = () => {
-    //     let upperCasePostcode = this.props.postcode.toUpperCase();
-    //     console.log(upperCasePostcode)
-    //     var myHeaders = new Headers();
-    //     myHeaders.append("postcode", upperCasePostcode);
-    //     myHeaders.append("Content-Type", "application/json");
+    getPostcodeInfo = (currentPostcode) => {
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+        var upperCasePostcode = currentPostcode.toUpperCase();
+        var url = "https://postcode-data-api.web-sandpit.sandpit.rscomp.systems/?postcode=" + upperCasePostcode
 
-    //     var requestOptions = {
-    //     method: 'GET',
-    //     headers: myHeaders,
-    //     redirect: 'follow'
-    //     };
+        fetch(url, requestOptions)
+        .then(response => response.text())
+        .then(result => this.setPostcode(result))
+        .catch(error => console.log('error', error));
+    }
 
-    //     if (this.props.userReg) {
+    setPostcode = (postcodeResults) => {
+        let convertToJSON = JSON.parse(postcodeResults);
+        let getDescription = convertToJSON.Description
+            if (getDescription === "Med Alert" || "High Alert" || "Very High Alert") {
+            this.getDangerLevel(getDescription)
+        }
+    } 
 
+    getDangerLevel = (dangerLevel) => {
+        let result
+        if (dangerLevel === undefined) {
+            result = "Pending"
+        } else {
+            result = dangerLevel
+        }
+        this.setDangerLevel(result)
+    }
 
-    //     fetch("https://postcode-data-api.web-sandpit.sandpit.rscomp.systems", requestOptions)
-    //     .then(response => response.text())
-    //     .then(result => console.log(result))
-    //     .catch(error => console.log('error', error));
-    //     }
-    // }
-
-    getDangerLevel = () => {
-        return this.state.dangerLevel
+    setDangerLevel = (returnedDangerLevel) => {
+        this.setState({ dangerLevel: returnedDangerLevel })
     }
 
     componentDidMount() {
-    //  setTimeout(() => {
-    //         this.getPostcodeInfo();
-    //     }, 500)
+        this.getPostcodeInfo(this.props.postcode)
     }
 
     render() {
-        let currentDangerLevel = this.getDangerLevel()
-        if (currentDangerLevel === 1) {
-            return (
-                <div>
-                    <div className="danger-level" id="low-level">
-                        <span>Low</span>
-                    </div>
-                </div>
-            )
-        } else if (currentDangerLevel === 2) {
-            return (
-                <div>
-                    <div className="danger-level" id="med-level">
-                        <span>Medium</span>
-                    </div>
-                </div>
-            )
-        } else { 
-            return (
+        return (
             <div>
-                <div className="danger-level" id="high-level">
-                    <span>High</span>
+              {this.state.dangerLevel === "Medium Alert" && 
+                <div className="danger-level" id="low-level">
+                    <span>{this.state.dangerLevel}</span>
                 </div>
+              }
+              {this.state.dangerLevel === "High Alert" && 
+                <div className="danger-level" id="med-level">
+                    <span>{this.state.dangerLevel}</span>
+                </div>
+              }
+              {this.state.dangerLevel === "Very High Alert" && 
+                <div className="danger-level" id="high-level">
+                    <span>{this.state.dangerLevel}</span>
+                </div>
+              }
+              {this.state.dangerLevel === "Pending" && 
+                <div className="danger-level" id="pending-alert">
+                    <span>{this.state.dangerLevel}</span>
+                </div>
+              }
             </div>
-            )
-        }
+        );
     }
 }
 

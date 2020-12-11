@@ -44,8 +44,12 @@ class Dashboard extends React.Component {
                 <DashboardHeader />
                     <div className="content-inner">
                         <div id="responsive-dashboard">
-                            <IsoCountdown />
-                            <PostcodeChecker postcode={this.state.postcode} userReg={this.props.userReg} />
+                            {this.props.matchStatus === true &&
+                            <div>
+                                <IsoCountdown matchStatus={this.props.matchStatus} matchTime={this.state.timeOfMatch}/>
+                            </div>
+                            }
+                            <PostcodeChecker postcode={this.state.postcode} matchStatus={this.props.matchStatus} userReg={this.props.userReg} />
                         </div>
                         <div id="button-holder">
                             <div className="row">

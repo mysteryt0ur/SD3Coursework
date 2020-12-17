@@ -584,6 +584,11 @@ input {
   width: 100vw;
 }
 
+.submit-button-positioner-welcome-success  {
+  float: left;
+  margin: -130px 125px;
+}
+
 .addit-page {
   height: calc(100vh - 7vh); 
 }

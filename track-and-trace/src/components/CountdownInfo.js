@@ -4,14 +4,33 @@ class CountdownInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            daysLeft: 7,
-            hoursLeft: 1
+            daysLeft: undefined,
+            hoursLeft: undefined,
+            isoFinishDay: undefined,
+            isoFinishHour: undefined,
+            isoPeriod: 10,
         };
     }
 
     getTimeLeft = () => {
         let timeOfMatch = this.props.matchTime
-        console.log(timeOfMatch)
+        let isoTime = this.getIsoTime();
+
+        this.setState({ isoFinishDay: isoTime.getDate()})
+        this.setState({ isoFinishHour: isoTime.getHours()})
+        this.setState({ daysLeft: isoTime.getDate() - timeOfMatch.getDate()})
+        this.setState({ hoursLeft: isoTime.getHours() - timeOfMatch.getHours()})
+        console.log(this.state.isoFinishDay)
+        console.log(this.state.isoFinishHour)
+        console.log(this.state.daysLeft)
+        console.log(this.state.hoursLeft)
+    }
+
+    getIsoTime = () => {
+        let newDate = new Date(this.props.matchTime);
+        newDate.setDate(newDate.getDate() + this.state.isoPeriod)
+        console.log(newDate);
+        return newDate;
     }
 
     getDayInfo = () => {
@@ -19,7 +38,11 @@ class CountdownInfo extends React.Component {
     }
 
     getHourInfo = () => {
-        return this.state.daysLeft
+        return this.state.hoursLeft
+    }
+
+    componentDidMount() {
+        this.getTimeLeft();
     }
 
     render() {
@@ -32,11 +55,11 @@ class CountdownInfo extends React.Component {
                 <div className="countdown-info">
                     <p>
                         <span className="countdown-num">
-                            0{currentDaysLeft}
+                            {currentDaysLeft}
                         </span>
                     &nbsp;Days : &nbsp;
                         <span className="countdown-num">
-                            0{currentHoursLeft}
+                            {currentHoursLeft}
                         </span>
                     &nbsp;Hours
                     </p>

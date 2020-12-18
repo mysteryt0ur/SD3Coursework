@@ -16,12 +16,12 @@ class App extends React.Component {
       matchFound: false,
       postcode: "",
       isAppLoading: true,
-      timeOfMatch: null
+      timeOfMatch: undefined
     };  
   }
 
   getRandomCode = () => {
-    let code = Math.floor(100000 + Math.random() * 9000000000);
+    let code = Math.floor(100000 + Math.random() * 900000000000000);
     console.log(code)
     return this.hashCode(code)
   }
@@ -47,15 +47,8 @@ class App extends React.Component {
 
   // check every 10 seconds to see if any new cases have arisen
   checkingForAppCode = (appCode) => {
-    let checkingForCases = setInterval(() => {
-      this.getFlaggedAccounts(appCode);
-      console.log("checking reg status for " + localStorage.getItem('tandt-appName'))
-    }, 5000)
-
-    if (this.state.matchFound === true) {
-      clearInterval(checkingForCases)
-    } else 
-      return checkingForCases
+    this.getFlaggedAccounts(appCode);
+    console.log("checking reg status for " + localStorage.getItem('tandt-appName'))
   }
 
   getFlaggedAccounts = (appCode) => {
@@ -88,30 +81,24 @@ class App extends React.Component {
   }
 
   checkingForCases = (caseData) => {
-    let date = Date.now();
-    let dateOfMatch = new Date(date)
+    let date = new Date();
     let convertedResults = JSON.parse(caseData);
-    console.log(dateOfMatch)
-    let splitDOMDay = dateOfMatch.getDate();
-    let splitDOMHour = dateOfMatch.getHours();
-    console.log("Time details about when the match was found: " + splitDOMDay + ", " + splitDOMHour)
-    let matchDayAndHour = splitDOMDay + ", " + splitDOMHour
+    let appCode = localStorage.getItem('tandt-appName')
 
     if (convertedResults.confirmedCases >= 0 || convertedResults.selfDiagnosis >= 1) {
-      this.setState({ timeOfMatch: dateOfMatch })
-      setTimeout(() => {
-        this.setState({ matchFound: true })
-        console.log(this.state.matchFound)
-        console.log(this.state.timeOfMatch)
-      }, 1500)
+      this.setState({ timeOfMatch: date })
+      this.setState({ matchFound: true })
+      console.log(this.state.matchFound)
+      console.log(this.state.timeOfMatch)
+    } else {
+      this.checkRegularlyForCases(appCode);
     }
+  }
 
-
-    // replace with below code after testing 
-    // if (convertedResults.confirmedCases >= 1 || convertedResults.selfDiagnosis >= 1) {
-    //   this.setState({ matchFound: true })
-    //   this.setState({ timeOfMatch: dateInfo })
-    // }
+  checkRegularlyForCases = (appCode) => {
+    setTimeout(() => {
+      this.checkingForAppCode(appCode);
+    }, 10800000)
   }
 
   getRegistrationStatus = () => {
@@ -143,18 +130,21 @@ class App extends React.Component {
 
   componentDidMount() {
     this.timeToRender().then(() => this.setState({ isAppLoading: false }));
-    if (this.state.matchFound === false) {
-      setTimeout(() => {
-        this.getAppCode();
-      }, 500)
-      setInterval(() => {
-        this.getRegistrationStatus();
-      }, 2000)
-    }
-  }
+    setTimeout(() => {
+      this.getAppCode();
+    }, 500)
+    setInterval(() => {
+      this.getRegistrationStatus();
+    }, 500)
 
-  logCase() {
-    return console.log("howdy")
+    if (this.state.isUserRegistered === false) {
+      let checkWhenUserRegisters = setInterval(() => {
+        if (this.state.isUserRegistered === true) {
+          this.getAppCode();
+          clearInterval(checkWhenUserRegisters)
+        }
+      }, 500)
+    }
   }
 
   render() { 
@@ -173,12 +163,12 @@ class App extends React.Component {
               <ProximityNotification />
             </div>
           }  */}
-          {this.state.isUserRegistered === true && this.state.matchTime === null &&
+          {this.state.isUserRegistered === true && this.state.timeOfMatch === undefined &&
             <div>
               <Dashboard userReg={this.state.isUserRegistered} matchStatus={this.state.matchFound}/>
             </div>
           }
-          {this.state.isUserRegistered === true && this.state.matchFound === true &&
+          {this.state.isUserRegistered === true && this.state.timeOfMatch !== undefined &&
             <div>
               <Dashboard userReg={this.state.isUserRegistered} matchStatus={this.state.matchFound} matchTime={this.state.timeOfMatch}/>
             </div>

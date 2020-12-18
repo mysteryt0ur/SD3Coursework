@@ -15,7 +15,7 @@ class IsoCountdown extends React.Component {
                     <div className="iso-info">
                         <div className="iso-data">
                             <span>Your isolation period ends in:</span>
-                            <CountdownInfo matchTime={this.state.timeOfMatch}/>
+                            <CountdownInfo matchTime={this.props.matchTime}/>
                         </div>
                         <div className="addit-info">
                             <div>

@@ -46,7 +46,7 @@ class Dashboard extends React.Component {
                         <div id="responsive-dashboard">
                             {this.props.matchStatus === true &&
                             <div>
-                                <IsoCountdown matchStatus={this.props.matchStatus} matchTime={this.state.timeOfMatch}/>
+                                <IsoCountdown matchStatus={this.props.matchStatus} matchTime={this.props.matchTime}/>
                             </div>
                             }
                             <PostcodeChecker postcode={this.state.postcode} matchStatus={this.props.matchStatus} userReg={this.props.userReg} />

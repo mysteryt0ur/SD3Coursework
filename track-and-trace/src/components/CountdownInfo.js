@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 class CountdownInfo extends React.Component {
     constructor(props) {
@@ -33,21 +33,13 @@ class CountdownInfo extends React.Component {
         return newDate;
     }
 
-    getDayInfo = () => {
-        return this.state.daysLeft
-    }
+  getDayInfo = () => {
+    return this.state.daysLeft;
+  };
 
-    getHourInfo = () => {
-        return this.state.hoursLeft
-    }
-
-    componentDidMount() {
-        this.getTimeLeft();
-    }
-
-    render() {
-        let currentDaysLeft = this.getDayInfo()
-        let currentHoursLeft = this.getHourInfo()
+  render() {
+    let currentDaysLeft = this.getDayInfo();
+    let currentHoursLeft = this.getHourInfo();
 
         if (currentDaysLeft >= 1 ) {
             return (
@@ -81,6 +73,7 @@ class CountdownInfo extends React.Component {
             )
         }
     }
+  }
 }
 
 export default CountdownInfo;

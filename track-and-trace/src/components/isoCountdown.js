@@ -1,10 +1,8 @@
-  
-import React from 'react';
-import ArrowIcon from '../images/arrow.png'
-import CountdownInfo from '../components/CountdownInfo'
+import React from "react";
+import ArrowIcon from "../images/arrow.png";
+import CountdownInfo from "../components/CountdownInfo";
 
 class IsoCountdown extends React.Component {
-
     render() {
         return (
             <div>
@@ -28,8 +26,11 @@ class IsoCountdown extends React.Component {
                     </div>
                 </div>
             </div>
-        )
-    }
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default IsoCountdown;

@@ -42,15 +42,54 @@ class Dashboard extends React.Component {
         {this.state.activePage === "dashboard" &&
           this.state.postcode !== "empty" && (
             <div>
-              <DashboardHeader />
-              <div className="content-inner">
-                <div id="responsive-dashboard">
-                  {this.props.matchStatus === true && (
-                    <div>
-                      <IsoCountdown
-                        matchStatus={this.props.matchStatus}
-                        matchTime={this.state.timeOfMatch}
-                      />
+                {this.state.activePage === "dashboard" && this.state.postcode !== "empty" &&
+                <div>
+                <DashboardHeader />
+                    <div className="content-inner">
+                        <div id="responsive-dashboard">
+                            {this.props.matchStatus === true &&
+                            <div>
+                                <IsoCountdown matchStatus={this.props.matchStatus} matchTime={this.props.matchTime}/>
+                            </div>
+                            }
+                            <PostcodeChecker postcode={this.state.postcode} matchStatus={this.props.matchStatus} userReg={this.props.userReg} />
+                        </div>
+                        <div id="button-holder">
+                            <div className="row">
+                                <div className="button-one" id="venue-button" onClick={() => this.showPage("venueCheckIn")}>
+                                    <img src={venueIcon} alt="venue-icon" id="venue-icon"></img>
+                                    <span className="main-button">Venue Check-In</span>
+                                </div>
+                                <div className="button-two" id="results-button" onClick={() => this.showPage("inputTestResult")}>
+                                    <img src={resultIcon} alt="results-icon" id="results-icon"></img> 
+                                    <span className="main-button">Input Test Result</span>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="button-one" id="book-test-button">
+                                    <img src={testIcon} alt="test-icon" id="test-icon"></img>
+                                    <span className="main-button">Book a Test</span>
+                                </div>
+                                <div className="button-two" id="checker-button">
+                                    <img src={symptomIcon} alt="checker-icon" id="checker-icon"></img>
+                                    <span className="main-button">Symptom Checker</span>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="button-one" id="settings-button">
+                                    <img src={settingsIcon} alt="settings-icon" id="settings-icon"></img>
+                                    <span className="main-button">
+                                        <p>Settings</p>
+                                    </span>
+                                </div>
+                                <div className="button-two" id="about-button" onClick={() => this.showPage("aboutPage")}>
+                                    <img src={aboutIcon} alt="about-icon" id="about-icon"></img>
+                                    <span className="main-button">
+                                        <p>About & Uninstall</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                   )}
                   <PostcodeChecker
